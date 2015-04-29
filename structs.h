@@ -6,7 +6,7 @@
 //Structs
 struct PositionChar
 {
-	char lin, col; // guada posiçãoem formato char; ranges: lin - ['A'..'Z']; col - ['a'..'z']
+	char lin, col; // guarda posição em formato char; ranges: lin - ['A'..'Z']; col - ['a'..'z']
 };
 
 struct PositionInt
