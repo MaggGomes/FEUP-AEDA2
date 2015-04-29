@@ -1,5 +1,5 @@
-#include <ship.h>
-#include <vector>
+#include "ship.h"
+#include "bomb.h"
 
 #ifndef board_h
 #define board_h
