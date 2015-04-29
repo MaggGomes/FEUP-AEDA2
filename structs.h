@@ -6,12 +6,12 @@
 //Structs
 struct PositionChar
 {
-	char lin, col;
+	char lin, col; // guada posiçãoem formato char; ranges: lin - ['A'..'Z']; col - ['a'..'z']
 };
 
 struct PositionInt
 {
-	unsigned int lin, col;
+	unsigned int lin, col; // guarda a posição em formato de inteiro sem sinal
 };
 
 #endif
