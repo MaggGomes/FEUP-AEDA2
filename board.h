@@ -4,8 +4,6 @@
 #ifndef board_h
 #define board_h
 
-// FALTA COMPLETAR
-
 class Board
 {
 public:

@@ -1,6 +1,8 @@
+#include "bomb.h"
+#include "board.h"
+
 #ifndef player_h
 #define player_h
-
 
 class Player
 {

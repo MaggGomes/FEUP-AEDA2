@@ -1,7 +1,7 @@
 #include "board.h"
 
 
-board::board()
+Board::board()
 {
 }
 

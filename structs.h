@@ -1,9 +1,6 @@
 #ifndef structs_h
 #define structs_h
 
-// FALTA COMPLETAR
-
-//Structs
 struct PositionChar
 {
 	char lin, col; // guarda posição em formato char; ranges: lin - ['A'..'Z']; col - ['a'..'z']

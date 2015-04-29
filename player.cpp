@@ -1,11 +1,11 @@
 #include "player.h"
 
 
-player::player()
+Player::player()
 {
 }
 
 
-player::~player()
+Player::~player()
 {
 }

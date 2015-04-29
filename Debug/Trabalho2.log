@@ -1,0 +1,62 @@
+﻿Build started 29/04/2015 20:00:43.
+     1>Project "C:\Users\Manuel Gomes\Documents\GitHub\Trabalho_2\Trabalho2.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt board.cpp bomb.cpp player.cpp ship.cpp
+         ship.cpp
+     1>c:\users\manuel gomes\documents\github\trabalho_2\ship.h(8): error C2061: syntax error : identifier 'PositionChar'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\ship.h(17): error C2146: syntax error : missing ';' before identifier 'position'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\ship.h(17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\manuel gomes\documents\github\trabalho_2\ship.h(21): error C2146: syntax error : missing ';' before identifier 'status'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\ship.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\manuel gomes\documents\github\trabalho_2\ship.cpp(4): error C2039: 'ship' : is not a member of 'Ship'
+                 c:\users\manuel gomes\documents\github\trabalho_2\ship.h(6) : see declaration of 'Ship'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\ship.cpp(5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\manuel gomes\documents\github\trabalho_2\ship.cpp(6): warning C4508: 'ship' : function should return a value; 'void' return type assumed
+         player.cpp
+     1>c:\users\manuel gomes\documents\github\trabalho_2\ship.h(21): error C2146: syntax error : missing ';' before identifier 'status'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\ship.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.h(10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.h(10): error C2143: syntax error : missing ',' before '&'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.h(19): error C2143: syntax error : missing ';' before '<'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.h(19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.h(19): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.h(20): error C2143: syntax error : missing ';' before '<'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.h(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.h(20): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\player.h(10): error C2061: syntax error : identifier 'string'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\player.h(17): error C2146: syntax error : missing ';' before identifier 'name'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\player.h(17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\manuel gomes\documents\github\trabalho_2\player.cpp(4): error C2039: 'player' : is not a member of 'Player'
+                 c:\users\manuel gomes\documents\github\trabalho_2\player.h(8) : see declaration of 'Player'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\player.cpp(5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\manuel gomes\documents\github\trabalho_2\player.cpp(6): warning C4508: 'player' : function should return a value; 'void' return type assumed
+     1>c:\users\manuel gomes\documents\github\trabalho_2\player.cpp(9): error C2523: 'Player::~player' : destructor tag mismatch
+     1>c:\users\manuel gomes\documents\github\trabalho_2\player.cpp(10): error C2600: 'Player::~Player' : cannot define a compiler-generated special member function (must be declared in the class first)
+         bomb.cpp
+     1>c:\users\manuel gomes\documents\github\trabalho_2\bomb.cpp(13): error C2143: syntax error : missing ';' before '}'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\bomb.cpp(13): warning C4390: ';' : empty controlled statement found; is this the intent?
+     1>c:\users\manuel gomes\documents\github\trabalho_2\bomb.cpp(18): error C2447: '{' : missing function header (old-style formal list?)
+         board.cpp
+     1>c:\users\manuel gomes\documents\github\trabalho_2\ship.h(8): error C2061: syntax error : identifier 'PositionChar'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\ship.h(17): error C2146: syntax error : missing ';' before identifier 'position'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\ship.h(17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\manuel gomes\documents\github\trabalho_2\ship.h(21): error C2146: syntax error : missing ';' before identifier 'status'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\ship.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.h(10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.h(10): error C2143: syntax error : missing ',' before '&'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.h(19): error C2143: syntax error : missing ';' before '<'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.h(19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.h(19): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.h(20): error C2143: syntax error : missing ';' before '<'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.h(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.h(20): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.cpp(4): error C2039: 'board' : is not a member of 'Board'
+                 c:\users\manuel gomes\documents\github\trabalho_2\board.h(8) : see declaration of 'Board'
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.cpp(5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.cpp(6): warning C4508: 'board' : function should return a value; 'void' return type assumed
+         Generating Code...
+     1>Done Building Project "C:\Users\Manuel Gomes\Documents\GitHub\Trabalho_2\Trabalho2.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.20

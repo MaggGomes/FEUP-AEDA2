@@ -3,8 +3,6 @@
 #ifndef bomb_h
 #define bomb_h
 
-// FALTA COMPLETAR
-
 class Bomb
 {
 public:
