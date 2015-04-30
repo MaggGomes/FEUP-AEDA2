@@ -4,8 +4,8 @@
 class Ship
 {
 public:
+	Ship();
 	Ship(char symbol, PositionChar position, char orientation, unsigned int size, unsigned int color);
-	
 	bool move(char direction, bool rotate, unsigned int lineMin, unsigned int columnMin, unsigned int lineMax, unsigned int columnMax); // move o navio
 	bool moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int lineMax, unsigned int columnMax); // move o navio aleatoriamente
 	bool attack(size_t partNumber); //partNumber = {0,1,…, tamanho-1}

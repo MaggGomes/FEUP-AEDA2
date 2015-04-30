@@ -1,7 +1,7 @@
 #include "ship.h"
 
 
-Ship::ship()
+Ship::Ship()
 {
 }
 

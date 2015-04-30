@@ -1,13 +1,29 @@
+#include <iostream>
 #include <cstdlib>
 #include <ctime>
 #include "bomb.h"
 
 // FALTA ACABAR DE FAZER ESTES CONSTRUTORES E NO FINAL TESTAR NO MAIN
 
+Bomb::Bomb()
+{
+
+	targetLine = 'x';
+	targetColumn = 'y';
+
+
+	// targetLine, targetColumn
+}
+
+
 Bomb::Bomb(PositionChar targetPosition)
 {
 	srand((unsigned int)time(NULL)); // permite gerar números aleatórios
-	
+
+	targetLine = 'a';
+	targetColumn = 'b';
+
+
 	int erro = rand() % 5; // se 0(acerta) 1(+1cima) 2(+1baixo) 3(+1direita) 4(+1esquerda)
 	switch (erro)
 	{
@@ -28,12 +44,9 @@ Bomb::Bomb(PositionChar targetPosition)
 	}
 
 
-
 }
 
-
-
-PositionChar getTargetPosition();
+PositionChar Bomb::getTargetPosition() const
 {
 	PositionChar temp; // struct que a funçao vai devolver 
 	char x, y;         // var locais onde ficam as coordenadas pedidas
@@ -44,9 +57,14 @@ PositionChar getTargetPosition();
 	temp.lin = x;
 	temp.col = y;
 
+	
+
+	
+
 	return temp;
 }
 
-
-
- 
+void Bomb::show() const
+{
+	cout << "Coordenada da linha: " << targetLine << endl << "Coordenada da coluna: " << targetColumn << endl << endl;
+}

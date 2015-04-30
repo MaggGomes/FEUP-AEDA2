@@ -7,6 +7,7 @@
 class Player
 {
 public:
+	Player();
 	Player(string playerName, string boardFilename);
 	void showBoard() const; // mostra o tabuleiro do jogador
 	Bomb getBomb() const; // pergunta pelas coordenadas da bomba e coloca bomba
@@ -15,7 +16,7 @@ public:
 	
 private:
 	string name; // nome do jogador
-	Board board; // tabuleirodo jogador
+	Board board; // tabuleiro do jogador
 };
 
 #endif

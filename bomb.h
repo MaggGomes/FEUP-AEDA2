@@ -6,6 +6,7 @@
 class Bomb
 {
 public:
+	Bomb();
 	Bomb(PositionChar targetPosition);
 	PositionChar getTargetPosition() const;
 	void show() const; // mostra os atributos da bomba (para debugging)

@@ -6,6 +6,7 @@
 #include <windows.h>
 #include <fstream>
 #include <cstddef>
+#include "bomb.h"
 
 using namespace std;
 
@@ -88,19 +89,30 @@ void impressaoTitulo()
 	cout << titulo << endl << endl;
 
 	setcolor(7, 0);
-
 }
 
 int main()
 {
+	string infilename; // ficheiro de entrada
+	string outfilename; // ficheiro de saida
+	string modo_funcionamento; // modo funcionamento
+	ifstream leficheiro; // objeto para abertura dos ficheiros de configuração
+	ofstream escreveficheiro; // grava os dados das posições dos barcos no ficheiro selecionado
+	vector < vector <char> > coordenadas = // vector com as coordenadas
+	{ { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' },
+	{ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' } };
 
 	impressaoTitulo(); // imprime título do jogo
 
 	cout << "Bem-vindo ao jogo Battleship!" << endl << endl;
 
+	Bomb bomba;
 
+	bomba.getTargetPosition();
 
-
+	cout << endl;
+	
+	bomba.show();
 
 	return 0;
 }
