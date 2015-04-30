@@ -1,8 +1,12 @@
+#ifndef board_h
+#define board_h
+
+#include <string>
+#include <vector>
 #include "ship.h"
 #include "bomb.h"
 
-#ifndef board_h
-#define board_h
+using namespace std;
 
 class Board
 {

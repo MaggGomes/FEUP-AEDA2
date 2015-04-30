@@ -1,14 +1,14 @@
 #include <cstdlib>
+#include <ctime>
 #include "bomb.h"
-
 
 // FALTA ACABAR DE FAZER ESTES CONSTRUTORES E NO FINAL TESTAR NO MAIN
 
 Bomb::Bomb(PositionChar targetPosition)
 {
+	srand((unsigned int)time(NULL)); // permite gerar números aleatórios
 	
-	
-	int erro = rand() % 5; //se 0(acerta) 1(+1cima) 2(+1baixo) 3(+1direita) 4(+1esquerda)
+	int erro = rand() % 5; // se 0(acerta) 1(+1cima) 2(+1baixo) 3(+1direita) 4(+1esquerda)
 	switch (erro)
 	{
 	case '1':
@@ -35,7 +35,7 @@ Bomb::Bomb(PositionChar targetPosition)
 
 PositionChar getTargetPosition();
 {
-	PositionChar temp; //struct que a funçao vai devolver 
+	PositionChar temp; // struct que a funçao vai devolver 
 	char x, y;         // var locais onde ficam as coordenadas pedidas
 
 	cout << "Indique as coordenadas do alvo." << endl;

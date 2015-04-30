@@ -1,7 +1,6 @@
 #ifndef ship_h
 #define ship_h
 
-
 class Ship
 {
 public:
