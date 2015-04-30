@@ -3,27 +3,15 @@
 #include <ctime>
 #include "bomb.h"
 
-// FALTA ACABAR DE FAZER ESTES CONSTRUTORES E NO FINAL TESTAR NO MAIN
-
 Bomb::Bomb()
 {
-
-	targetLine = 'x';
-	targetColumn = 'y';
-
-
-	// targetLine, targetColumn
+	
 }
-
 
 Bomb::Bomb(PositionChar targetPosition)
 {
-	srand((unsigned int)time(NULL)); // permite gerar números aleatórios
-
-	targetLine = 'a';
-	targetColumn = 'b';
-
-
+	/*srand((unsigned int)time(NULL)); // permite gerar números aleatórios
+	
 	int erro = rand() % 5; // se 0(acerta) 1(+1cima) 2(+1baixo) 3(+1direita) 4(+1esquerda)
 	switch (erro)
 	{
@@ -41,7 +29,11 @@ Bomb::Bomb(PositionChar targetPosition)
 		break;
 	case '0':
 		break;
-	}
+	}*/
+
+	targetLine = targetPosition.lin;
+	targetColumn = targetPosition.col;
+
 
 
 }
@@ -56,8 +48,6 @@ PositionChar Bomb::getTargetPosition() const
 
 	temp.lin = x;
 	temp.col = y;
-
-	
 
 	
 

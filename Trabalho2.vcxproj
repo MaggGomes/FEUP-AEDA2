@@ -82,6 +82,7 @@
     <ClCompile Include="bomb.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="functions.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="player.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -93,9 +94,11 @@
   <ItemGroup>
     <ClInclude Include="board.h" />
     <ClInclude Include="bomb.h" />
+    <ClInclude Include="functions.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="ship.h" />
     <ClInclude Include="structs.h" />
+    <ClInclude Include="variables.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
