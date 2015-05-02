@@ -1,10 +1,11 @@
 #ifndef ship_h
 #define ship_h
 
+#include "structs.h"
+
 class Ship
 {
 public:
-	Ship();
 	Ship(char symbol, PositionChar position, char orientation, unsigned int size, unsigned int color);
 	bool move(char direction, bool rotate, unsigned int lineMin, unsigned int columnMin, unsigned int lineMax, unsigned int columnMax); // move o navio
 	bool moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int lineMax, unsigned int columnMax); // move o navio aleatoriamente
@@ -19,7 +20,7 @@ private:
 	unsigned int color; // código das cores
 	string status; // status[i]: maiúscula = bom; lowercase = danificado
 	// ex: "FFFF" significa que a "fragata" está intacta;
-	// ex: "FFfF" significa que a 'partNumber' 2 was hit by a bomb
+	// ex: "FFfF" significa que a 'partNumber' 2 foi atingida por uma bomba
 	};
 
 #endif

@@ -11,9 +11,8 @@ using namespace std;
 class Board
 {
 public:
-	Board();
 	Board(const string &filename);   // carrega o tabuleiro do ficheiro 'filename'
-	bool putShip(const Ship &s);     // adiciona um navio ao tabuleiro se possÌvel
+	bool putShip(const Ship &s);     // adiciona um navio ao tabuleiro se poss√≠vel
 	void moveShips();                // tenta mover aleatoriamente todos os navios da frota
 	bool attack(const Bomb &b);
 	void display() const;            // mostra o tabuleiro colorido durante o jogo
@@ -21,10 +20,8 @@ public:
 	
 private:
 	int numLines, numColumns;        
-	vector<Ship> ships;              // vector com os navios que s„o colocados no tabuleiro
-	vector<vector<int>> board;       // each element indicates
-	
-	// -1 È usado para representar o mar
+	vector<Ship> ships;              // vector com os navios que s√£o colocados no tabuleiro
+	vector<vector<int>> board;       // cada elemento indica o √≠ndice de um navio no vector "ships"; -1 representa o mar
 };
 
 #endif

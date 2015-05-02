@@ -2,9 +2,6 @@
 #include <string>
 #include <windows.h>
 #include "functions.h"
-#include "variables.h"
-
-using namespace std;
 
 // Implementação das funções
 
@@ -54,3 +51,35 @@ void impressaoTitulo()
 
 	setcolor(7, 0);
 }
+
+unsigned int getlinha(char linha, const vector < vector <char> > &coordenadas)
+{
+	unsigned int intlinha;
+
+	for (size_t i = 0; i < 26; i++)
+	{
+		if (linha == coordenadas[1][i])
+		{
+			intlinha = i + 1;
+			break;
+		};
+	}
+
+	return intlinha;
+}
+
+unsigned int getcoluna(char coluna, const vector < vector <char> > &coordenadas)
+{
+	unsigned int intcoluna;
+
+	for (size_t j = 0; j < 26; j++)
+	{
+		if (coluna == coordenadas[0][j])
+		{
+			intcoluna = j + 1;
+		}
+	}
+	
+	return intcoluna;
+}
+
