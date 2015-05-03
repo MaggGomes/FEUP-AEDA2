@@ -11,6 +11,7 @@ using namespace std;
 class Board
 {
 public:
+	Board();
 	Board(const string &filename);   // carrega o tabuleiro do ficheiro 'filename'
 	bool putShip(const Ship &s);     // adiciona um navio ao tabuleiro se possível
 	void moveShips();                // tenta mover aleatoriamente todos os navios da frota

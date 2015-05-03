@@ -52,7 +52,7 @@ void impressaoTitulo()
 	setcolor(7, 0);
 }
 
-unsigned int getlinha(char linha, const vector < vector <char> > &coordenadas)
+unsigned int getlinha(char &linha, const vector < vector <char> > &coordenadas)
 {
 	unsigned int intlinha;
 
@@ -68,7 +68,7 @@ unsigned int getlinha(char linha, const vector < vector <char> > &coordenadas)
 	return intlinha;
 }
 
-unsigned int getcoluna(char coluna, const vector < vector <char> > &coordenadas)
+unsigned int getcoluna(char &coluna, const vector < vector <char> > &coordenadas)
 {
 	unsigned int intcoluna;
 
@@ -83,3 +83,17 @@ unsigned int getcoluna(char coluna, const vector < vector <char> > &coordenadas)
 	return intcoluna;
 }
 
+char getlowercase(char symbol, const vector < vector <char> > &coordenadas)
+{
+	char symblowercase; // inicialização da variável simbolo em letra minúscula
+
+	for (size_t i = 0; i < 26; i++)
+	{
+		if (symbol == coordenadas[1][i])
+		{
+			symblowercase = coordenadas[0][i];
+		}
+	}
+
+	return symblowercase; // devolve simbolo em letra minúscula
+}

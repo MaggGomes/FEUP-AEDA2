@@ -4,29 +4,29 @@
 
 Board::Board(const string &filename)
 {
-
+	// Cria tabuleiro
 }
 
 bool Board::putShip(const Ship &s)
 {
-
+	// Coloca navio
 }
 
 void Board::moveShips()
 {
-
+	// Move navios
 }
 bool Board::attack(const Bomb &b)
 {
-
+	// Coloca bomba no tabuleiro
 }
 
 void Board::display() const
 {
-
+	// Mostra tabuleiro
 }
 
-void show() const
+void Board::show() const
 {
 
 }

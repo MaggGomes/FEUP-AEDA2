@@ -15,7 +15,7 @@ int main()
 
 	cout << "Bem-vindo ao jogo Battleship!" << endl << endl;
 
-	char symbol = 'a';
+	char symbol = 'F';
 	PositionChar position;
 	position.lin = 'A';
 	position.col = 'a';
@@ -25,8 +25,11 @@ int main()
 		
 
 	Ship navio(symbol, position, orientation, size, color);
-	navio.show();
+	// navio.show();
+		
+	cout << navio.isDestroyed() << endl;
 
+	
 
 	return 0;
 }
