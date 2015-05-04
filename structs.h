@@ -13,7 +13,7 @@ struct ValoresNavio{
 	char simbolo; // simbolo do navio
 	string coordenadas; // letra maiuscula indica a linha, minuscula a coluna
 	string cor; //cor do navio
-	char coord_linha; // coordenada do tipo char superior esquerdo de colocacao do navio
+	char coord_linha; // coordenada do tipo char da linha do canto superior esquerdo de colocacao do navio
 	int coordenada_numlinha; // coordenada do tipo int da linha do canto superior esquerdo de colocacao do navio
 	char coord_coluna; // coordenada do tipo char da coluna do canto superior esquerdo de colocacao do navio
 	int coordenada_numcoluna; // coordenada do tipo int da coluna do canto superior esquerdo de colocacao do navio

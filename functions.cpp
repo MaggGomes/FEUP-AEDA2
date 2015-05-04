@@ -1,12 +1,13 @@
 #include <iostream>
 #include <string>
 #include <windows.h>
-#include <cstddef>)
+#include <cstddef>
+#include <ctime>
 
 #include "functions.h"
 #include "variables.h"
 
-// Implementa��o das fun��es
+// Implementação das funções
 
 void clrscr(void)
 {
@@ -17,7 +18,7 @@ void clrscr(void)
 	CONSOLE_SCREEN_BUFFER_INFO csbi;
 	GetConsoleScreenBufferInfo(hCon, &csbi);
 	dwConSize = csbi.dwSize.X * csbi.dwSize.Y;
-	// preenchimento com espa�os
+	// preenchimento com espaços
 	FillConsoleOutputCharacter(hCon, TEXT(' '), dwConSize, coordScreen, &cCharsWritten);
 	GetConsoleScreenBufferInfo(hCon, &csbi);
 	FillConsoleOutputAttribute(hCon, csbi.wAttributes, dwConSize, coordScreen, &cCharsWritten);
@@ -57,7 +58,7 @@ void impressaoTitulo()
 	cout << "Bem-vindo ao jogo Battleship!" << endl << endl;
 }
 
-unsigned int getlinha(char &linha, const vector < vector <char> > &coordenadas)
+unsigned int getLinha(char &linha, const vector < vector <char> > &coordenadas)
 {
 	unsigned int intlinha;
 
@@ -73,7 +74,7 @@ unsigned int getlinha(char &linha, const vector < vector <char> > &coordenadas)
 	return intlinha;
 }
 
-unsigned int getcoluna(char &coluna, const vector < vector <char> > &coordenadas)
+unsigned int getColuna(char &coluna, const vector < vector <char> > &coordenadas)
 {
 	unsigned int intcoluna;
 
@@ -84,13 +85,13 @@ unsigned int getcoluna(char &coluna, const vector < vector <char> > &coordenadas
 			intcoluna = j + 1;
 		}
 	}
-	
+
 	return intcoluna;
 }
 
-char getlowercase(char symbol, const vector < vector <char> > &coordenadas)
+char getLowercase(char symbol, const vector < vector <char> > &coordenadas)
 {
-	char symblowercase; // inicializa��o da vari�vel simbolo em letra min�scula
+	char symblowercase; // inicialização da variável simbolo em letra minúscula
 
 	for (size_t i = 0; i < coordenadas.at(0).size(); i++) //
 	{
@@ -100,5 +101,53 @@ char getlowercase(char symbol, const vector < vector <char> > &coordenadas)
 		}
 	}
 
-	return symblowercase; // devolve simbolo em letra min�scula
+	return symblowercase; // devolve simbolo em letra minúscula
+}
+
+char RandomPosition() // (0=“no move”, 1=‘N’, 2=‘S’, 3=’E’, 4=’W’)
+{
+	char changeposition = '0'; // variável a devolver que indica se houve mudança de posição ou não e se sim em que sentido
+	srand((unsigned int)time(NULL)); // permite gerar números aleatórios
+
+	int move = rand() % 5; // se 0 (não altera posição: '0') 1(+1: 'N') 2(+1: 'S') 3(+1: 'E') 4(+1: 'W')
+	switch (move)
+	{
+	case 0:
+		changeposition = '0';
+		break;
+	case 1:
+		changeposition = 'N';
+		break;
+	case 2:
+		changeposition = 'S';
+		break;
+	case 3:
+		changeposition = 'E';
+		break;
+	case 4:
+		changeposition = 'W';
+		break;
+	}
+
+	return changeposition;
+}
+
+bool Rotation() // Roda o navio (true=roda,false=mantém a orientação)
+{
+	bool rotate = true; //Variável a devolver que indica se a orientação será ou não alterada
+	srand((unsigned int)time(NULL)); 
+
+	int change = rand() % 2; // Caso seja 0 o navio "roda", caso seja 1 o navio mantém a orientação
+	switch (change)
+	{
+	case 0:
+		rotate = true;
+		break;
+	case 1:
+		rotate = false;
+		break;
+	}
+
+	return rotate;
+
 }

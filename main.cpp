@@ -12,7 +12,8 @@ using namespace std;
 
 int main()
 {
-	impressaoTitulo(); // imprime título do jogo
+	
+	impressaoTitulo(); // imprime tÃ­tulo do jogo
 	
 	char symbol = 'F';
 	PositionChar position;
@@ -22,11 +23,13 @@ int main()
 	unsigned int size = 5;
 	unsigned int color = 0;
 		
+	Bomb bomba(position);
 
-	Ship navio(symbol, position, orientation, size, color);
-	// navio.show();
-		
-	cout << navio.isDestroyed() << endl;
+	bomba.show();
+
+	
+	
+	
 
 	
 
