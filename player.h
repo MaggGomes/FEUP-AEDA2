@@ -1,5 +1,5 @@
-#ifndef player_h
-#define player_h
+#ifndef PLAYER_H
+#define PLAYER_H
 
 #include "bomb.h"
 #include "board.h"
@@ -18,4 +18,4 @@ private:
 	Board board; // tabuleiro do jogador
 };
 
-#endif
+#endif // PLAYER_H

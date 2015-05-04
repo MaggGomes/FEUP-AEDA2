@@ -1,8 +1,9 @@
-#ifndef board_h
-#define board_h
+#ifndef BOARD_H
+#define BOARD_H
 
 #include <string>
 #include <vector>
+
 #include "ship.h"
 #include "bomb.h"
 
@@ -25,4 +26,4 @@ private:
 	vector<vector<int>> board;       // cada elemento indica o índice de um navio no vector "ships"; -1 representa o mar
 };
 
-#endif
+#endif // BOARD_H

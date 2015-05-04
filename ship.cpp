@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstddef>
+
 #include "ship.h"
 #include "functions.h"
 

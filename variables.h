@@ -1,5 +1,5 @@
-#ifndef variables_h
-#define variables_h
+#ifndef VARIABLES_H
+#define VARIABLES_H
 
 #include <vector>
 
@@ -28,4 +28,4 @@ const vector < vector <char> > coordenadas = // vector com as letras das coorden
 { { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' },
 { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' } };
 
-#endif
+#endif // VARIABLES_H

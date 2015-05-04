@@ -1,5 +1,5 @@
-#ifndef functions_h
-#define funcions_h
+#ifndef FUNCTIONS_H
+#define FUNCTIONS_H
 
 #include "variables.h"
 
@@ -13,4 +13,4 @@ unsigned int getlinha(char &linha, const vector < vector <char> > &coordenadas);
 unsigned int getcoluna(char &coluna, const vector < vector <char> > &coordenadas); // converte coordenada coluna "char" em "unsigned int"
 char getlowercase(char symbol, const vector < vector <char> > &coordenadas); // converte símbolo do navio de letra maiúscula pra lettra minúscula
 
-#endif
+#endif // FUNCTIONS_H

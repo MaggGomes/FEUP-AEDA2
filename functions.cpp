@@ -1,7 +1,10 @@
 #include <iostream>
 #include <string>
 #include <windows.h>
+#include <cstddef>)
+
 #include "functions.h"
+#include "variables.h"
 
 // Implementação das funções
 
@@ -50,13 +53,15 @@ void impressaoTitulo()
 	cout << titulo << endl << endl;
 
 	setcolor(7, 0);
+
+	cout << "Bem-vindo ao jogo Battleship!" << endl << endl;
 }
 
 unsigned int getlinha(char &linha, const vector < vector <char> > &coordenadas)
 {
 	unsigned int intlinha;
 
-	for (size_t i = 0; i < 26; i++)
+	for (size_t i = 0; i < coordenadas.at(0).size(); i++)
 	{
 		if (linha == coordenadas[1][i])
 		{
@@ -72,7 +77,7 @@ unsigned int getcoluna(char &coluna, const vector < vector <char> > &coordenadas
 {
 	unsigned int intcoluna;
 
-	for (size_t j = 0; j < 26; j++)
+	for (size_t j = 0; j < coordenadas.at(0).size(); j++)
 	{
 		if (coluna == coordenadas[0][j])
 		{
@@ -87,7 +92,7 @@ char getlowercase(char symbol, const vector < vector <char> > &coordenadas)
 {
 	char symblowercase; // inicialização da variável simbolo em letra minúscula
 
-	for (size_t i = 0; i < 26; i++)
+	for (size_t i = 0; i < coordenadas.at(0).size(); i++) //
 	{
 		if (symbol == coordenadas[1][i])
 		{

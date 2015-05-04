@@ -1,5 +1,5 @@
-#ifndef ship_h
-#define ship_h
+#ifndef SHIP_H
+#define SHIP_H
 
 #include "structs.h"
 
@@ -23,4 +23,4 @@ private:
 	// ex: "FFfF" significa que a 'partNumber' 2 foi atingida por uma bomba
 	};
 
-#endif
+#endif // SHIP_H

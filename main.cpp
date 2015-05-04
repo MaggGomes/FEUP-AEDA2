@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+
 #include "variables.h"
 #include "functions.h"
 #include "structs.h"
@@ -12,9 +13,7 @@ using namespace std;
 int main()
 {
 	impressaoTitulo(); // imprime título do jogo
-
-	cout << "Bem-vindo ao jogo Battleship!" << endl << endl;
-
+	
 	char symbol = 'F';
 	PositionChar position;
 	position.lin = 'A';

@@ -1,5 +1,5 @@
-#ifndef structs_h
-#define structs_h
+#ifndef STRUCTS_H
+#define STRUCTS_H
 
 #include <string>
 
@@ -30,4 +30,4 @@ struct PositionInt
 	unsigned int lin, col; // guarda a posição em formato de inteiro sem sinal
 };
 
-#endif
+#endif // STRUCTS_H

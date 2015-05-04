@@ -1,5 +1,5 @@
-#ifndef bomb_h
-#define bomb_h
+#ifndef BOMB_H
+#define BOMB_H
 
 #include "structs.h"
 
@@ -14,4 +14,4 @@ private:
 	char targetLine, targetColumn;
 };
 
-#endif
+#endif // BOMB_H
