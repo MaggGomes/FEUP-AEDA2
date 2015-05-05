@@ -12,7 +12,8 @@ void impressaoTitulo(); // título do jogo
 unsigned int getLinha(char &linha, const vector < vector <char> > &coordenadas); // converte coordenada linha "char" em "unsigned int"
 unsigned int getColuna(char &coluna, const vector < vector <char> > &coordenadas); // converte coordenada coluna "char" em "unsigned int"
 char getLowercase(char symbol, const vector < vector <char> > &coordenadas); // converte símbolo do navio de letra maiúscula pra letra minúscula
-char RandomPosition(); // (0=“no move”, 1=‘N’, 2=‘S’, 3=’E’, 4=’W’)
+char randomPosition(); // (0=“no move”, 1=‘N’, 2=‘S’, 3=’E’, 4=’W’)
+bool rotation(); // roda o navio (true=roda,false=mantém a orientação)
 
 
 #endif // FUNCTIONS_H

@@ -9,7 +9,7 @@ Bomb::Bomb(PositionChar targetPosition) // constrói objeto da classe Bomb
 	targetLine = targetPosition.lin;
 	targetColumn = targetPosition.col;
 
-	switch (RandomPosition())
+	switch (randomPosition())
 	{
 	case '0':
 		break;

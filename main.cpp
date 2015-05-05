@@ -25,7 +25,19 @@ int main()
 		
 	Bomb bomba(position);
 
-	bomba.show();
+	Ship navio(symbol, position, orientation, size, color);
+
+	navio.show();
+
+	cout << endl;
+
+	navio.moveRand(0, 0, 1, 5); //
+
+	navio.show();
+
+	cout << endl;
+
+	
 
 	
 	

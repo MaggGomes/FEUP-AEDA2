@@ -104,7 +104,7 @@ char getLowercase(char symbol, const vector < vector <char> > &coordenadas)
 	return symblowercase; // devolve simbolo em letra minúscula
 }
 
-char RandomPosition() // (0=“no move”, 1=‘N’, 2=‘S’, 3=’E’, 4=’W’)
+char randomPosition() // (0=“no move”, 1=‘N’, 2=‘S’, 3=’E’, 4=’W’)
 {
 	char changeposition = '0'; // variável a devolver que indica se houve mudança de posição ou não e se sim em que sentido
 	srand((unsigned int)time(NULL)); // permite gerar números aleatórios
@@ -132,7 +132,7 @@ char RandomPosition() // (0=“no move”, 1=‘N’, 2=‘S’, 3=’E’, 4=�
 	return changeposition;
 }
 
-bool Rotation() // Roda o navio (true=roda,false=mantém a orientação)
+bool rotation() // Roda o navio (true=roda,false=mantém a orientação)
 {
 	bool rotate = true; //Variável a devolver que indica se a orientação será ou não alterada
 	srand((unsigned int)time(NULL)); 
