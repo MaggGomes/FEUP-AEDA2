@@ -89,21 +89,6 @@ unsigned int getColuna(char &coluna, const vector < vector <char> > &coordenadas
 	return intcoluna;
 }
 
-char getLowercase(char symbol, const vector < vector <char> > &coordenadas)
-{
-	char symblowercase; // inicialização da variável simbolo em letra minúscula
-
-	for (size_t i = 0; i < coordenadas.at(0).size(); i++) //
-	{
-		if (symbol == coordenadas[1][i])
-		{
-			symblowercase = coordenadas[0][i];
-		}
-	}
-
-	return symblowercase; // devolve simbolo em letra minúscula
-}
-
 char randomPosition() // (0=“no move”, 1=‘N’, 2=‘S’, 3=’E’, 4=’W’)
 {
 	char changeposition = '0'; // variável a devolver que indica se houve mudança de posição ou não e se sim em que sentido
