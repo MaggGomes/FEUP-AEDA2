@@ -13,8 +13,9 @@ using namespace std;
 class Board
 {
 public:
-	Board();
 	Board(const string &filename);   // carrega o tabuleiro do ficheiro 'filename'
+	int getLines() const; // devolve número de linhas do tabuleiro
+	int getColumns() const; // devolve número de colunas do tabuleiro
 	bool putShip(const Ship &s);     // adiciona um navio ao tabuleiro se possível
 	void moveShips();                // tenta mover aleatoriamente todos os navios da frota
 	bool attack(const Bomb &b);

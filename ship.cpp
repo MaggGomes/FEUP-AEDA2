@@ -10,8 +10,8 @@ Ship::Ship(char symbol, PositionChar position, char orientation, unsigned int si
 	string statustemp(size, symbol); // cria string com comprimento igual ao navio e formada pelo símbolo do mesmo
 
 	this->symbol = symbol;
-	this->position.lin = getLinha(position.lin, coordenadas);
-	this->position.col = getColuna(position.col, coordenadas);
+	this->position.lin = position.lin - 65; // converte de char maiúscula para int 
+	this->position.col = position.col - 97; // converte de char minúscula para int
 	this->orientation = orientation;
 	this->size = size;
 	this->color = color;
@@ -36,7 +36,7 @@ bool Ship::move(char direction, bool rotate, unsigned int lineMin, unsigned int 
 			break;
 
 		case 'N': // norte
-			if (position.lin - 1 >= lineMin)
+			if (position.lin > lineMin)
 			{
 				position.lin = position.lin - 1;
 				moveShip = true;
@@ -44,7 +44,7 @@ bool Ship::move(char direction, bool rotate, unsigned int lineMin, unsigned int 
 			break;
 
 		case 'S': // sul
-			if (position.lin + 1 <= lineMax)
+			if (position.lin < lineMax)
 			{
 				position.lin = position.lin + 1;
 				moveShip = true;
@@ -52,7 +52,7 @@ bool Ship::move(char direction, bool rotate, unsigned int lineMin, unsigned int 
 			break;
 
 		case 'E': // este
-			if (position.col + (size - 1) + 1 <= columnMax)
+			if (position.col + size - 1 < columnMax)
 			{
 				position.col = position.col + 1;
 				moveShip = true;
@@ -60,7 +60,7 @@ bool Ship::move(char direction, bool rotate, unsigned int lineMin, unsigned int 
 			break;
 
 		case 'W': // oeste
-			if (position.col - 1 >= columnMin)
+			if (position.col > columnMin)
 			{
 				position.col = position.col - 1;
 				moveShip = true;
@@ -77,7 +77,7 @@ bool Ship::move(char direction, bool rotate, unsigned int lineMin, unsigned int 
 			break;
 
 		case 'N': // norte
-			if (position.lin - 1 >= columnMin)
+			if (position.lin > columnMin)
 			{
 				position.lin = position.lin - 1;
 				moveShip = true;
@@ -85,7 +85,7 @@ bool Ship::move(char direction, bool rotate, unsigned int lineMin, unsigned int 
 			break;
 
 		case 'S': // sul
-			if (position.lin + (size - 1) + 1 <= columnMax)
+			if (position.lin + size - 1 < columnMax)
 			{
 				position.lin = position.lin + 1;
 				moveShip = true;
@@ -93,7 +93,7 @@ bool Ship::move(char direction, bool rotate, unsigned int lineMin, unsigned int 
 			break;
 
 		case 'E': // este
-			if (position.col + 1 <= lineMax)
+			if (position.col < lineMax)
 			{
 				position.col = position.col + 1;
 				moveShip = true;
@@ -101,7 +101,7 @@ bool Ship::move(char direction, bool rotate, unsigned int lineMin, unsigned int 
 			break;
 
 		case 'W': // oeste
-			if (position.col - 1 >= lineMin)
+			if (position.col > lineMin)
 			{
 				position.col = position.col - 1;
 				moveShip = true;
@@ -116,7 +116,7 @@ bool Ship::move(char direction, bool rotate, unsigned int lineMin, unsigned int 
 	{
 		if (orientation == 'H')
 		{
-			if (position.lin + (size - 1) <= lineMax)
+			if (position.lin + (size - 1) < lineMax)
 			{
 				orientation = 'V';
 				moveShip = true;
@@ -125,7 +125,7 @@ bool Ship::move(char direction, bool rotate, unsigned int lineMin, unsigned int 
 
 		else if (orientation == 'V')
 		{
-			if (position.col + (size - 1) <= columnMax)
+			if (position.col + (size - 1) < columnMax)
 			{
 				moveShip = true;
 				orientation = 'H';
@@ -147,13 +147,14 @@ bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int l
 	*/
 
 	if (orientation == 'H') // alteração posição do navio
-		switch (randomPosition())
 	{
+		switch (randomPosition())
+		{
 		case '0': // não move
 			break;
 
 		case 'N': // norte
-			if (position.lin - 1 >= lineMin)
+			if (position.lin > lineMin)
 			{
 				position.lin = position.lin - 1;
 				moveShip = true;
@@ -161,7 +162,7 @@ bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int l
 			break;
 
 		case 'S': // sul
-			if (position.lin + 1 <= lineMax)
+			if (position.lin < lineMax)
 			{
 				position.lin = position.lin + 1;
 				moveShip = true;
@@ -169,7 +170,7 @@ bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int l
 			break;
 
 		case 'E': // este
-			if (position.col + (size - 1) + 1 <= columnMax)
+			if (position.col + size - 1 < columnMax)
 			{
 				position.col = position.col + 1;
 				moveShip = true;
@@ -177,22 +178,24 @@ bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int l
 			break;
 
 		case 'W': // oeste
-			if (position.col - 1 >= columnMin)
+			if (position.col > columnMin)
 			{
 				position.col = position.col - 1;
 				moveShip = true;
 			}
 			break;
+		}
 	}
 
 	else if (orientation == 'V')
-		switch (randomPosition())
 	{
+		switch (randomPosition())
+		{
 		case '0': // não move
 			break;
 
 		case 'N': // norte
-			if (position.lin - 1 >= columnMin)
+			if (position.lin > columnMin)
 			{
 				position.lin = position.lin - 1;
 				moveShip = true;
@@ -200,7 +203,7 @@ bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int l
 			break;
 
 		case 'S': // sul
-			if (position.lin + (size - 1) + 1 <= columnMax)
+			if (position.lin + size - 1 < columnMax)
 			{
 				position.lin = position.lin + 1;
 				moveShip = true;
@@ -208,7 +211,7 @@ bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int l
 			break;
 
 		case 'E': // este
-			if (position.col + 1 <= lineMax)
+			if (position.col < lineMax)
 			{
 				position.col = position.col + 1;
 				moveShip = true;
@@ -216,20 +219,21 @@ bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int l
 			break;
 
 		case 'W': // oeste
-			if (position.col - 1 >= lineMin)
+			if (position.col > lineMin)
 			{
 				position.col = position.col - 1;
 				moveShip = true;
 			}
 			break;
+		}
 	}
 
 
-	if (rotation()) // altera orientação do navio
+	if (rotation()) // altera orientação do navio caso rotate seja true
 	{
 		if (orientation == 'H')
 		{
-			if (position.lin + (size - 1) <= lineMax)
+			if (position.lin + (size - 1) < lineMax)
 			{
 				orientation = 'V';
 				moveShip = true;
@@ -238,7 +242,7 @@ bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int l
 
 		else if (orientation == 'V')
 		{
-			if (position.col + (size - 1) <= columnMax)
+			if (position.col + (size - 1) < columnMax)
 			{
 				moveShip = true;
 				orientation = 'H';

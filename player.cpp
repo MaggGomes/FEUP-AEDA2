@@ -1,7 +1,5 @@
 #include "player.h"
 
-// FALTA COMPLETAR
-
 Player::Player(string playerName, string boardFilename) // corrigir este construtor
 {
 	string infilename;

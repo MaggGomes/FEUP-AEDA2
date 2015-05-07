@@ -31,11 +31,13 @@ int main()
 
 	cout << endl;
 
-	navio.moveRand(0, 0, 1, 5); //
+	navio.moveRand(0, 0, 9, 9); //
 
 	navio.show();
 
 	cout << endl;
+	
+	
 
 	return 0;
 }
