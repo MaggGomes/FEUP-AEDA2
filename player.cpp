@@ -1,28 +1,17 @@
 #include "player.h"
 
-Player::Player(string playerName, string boardFilename) // corrigir este construtor
+Player::Player(string playerName, string boardFilename) // FALTA - corrigir este construtor
 {
-	string infilename;
-do
-	{
-		cout << "NOME FICHEIRO CONFIGURACAO: ";
-		getline(cin, filename);
-		leficheiro.open(filename);
-		if (!leficheiro.fail())
-			cout << "Ficheiro aberto com sucesso!" << endl << endl;
-		else
-			cout << "Ficheiro inexistente! Tente novamente." << endl << endl;
-		setcolor(7, 0);
-	} while (leficheiro.fail());
-	
+    name = playerName;
+	Board board(boardFilename);
 }
 
-/*void Player::showBoard() const
+void Player::showBoard() const
 {
-
+	board.display();
 }
 
-Bomb Player::getBomb() const
+/*Bomb Player::getBomb() const
 {
 
 }
@@ -30,5 +19,4 @@ Bomb Player::getBomb() const
 void Player::attackBoard(const Bomb &b)
 {
 
-}
-*\
+}*/

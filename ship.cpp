@@ -21,45 +21,39 @@ Ship::Ship(char symbol, PositionChar position, char orientation, unsigned int si
 bool Ship::move(char direction, bool rotate, unsigned int lineMin, unsigned int columnMin, unsigned int lineMax, unsigned int columnMax)
 {
 	bool moveShip = false; // booleano que a função devolve que indica se o navio se move ou não
-
-	/*
-	A função move verifica primeiro se é possível mover o navio uma casa numa direção aleatória.
+		
+	/* A função move verifica primeiro se é possível mover o navio uma casa numa direção aleatória.
 	Se após esta alteração o navio permanecer totalmente dentro do tabuleiro a função move devolve true e altera pelo menos a posição inicial em uma casa.
-	Por fim é testado se também se pode rodar o navio. Caso este permaneça ,na sua totalidade, dentro do tabuleiro depois de rodar, a sua orientação é alterada juntamente com a posição.
-	*/
-
+	Por fim é testado se também se pode rodar o navio. Caso este permaneça ,na sua totalidade, dentro do tabuleiro depois de rodar, a sua orientação é alterada juntamente com a posição. */
+	
 	if (orientation == 'H') // alteração posição do navio
 	{
 		switch (direction)
 		{
-		case '0': // não move
+		case '0': // Não move
 			break;
-
-		case 'N': // norte
+		case 'N': // Move para norte
 			if (position.lin > lineMin)
 			{
 				position.lin = position.lin - 1;
 				moveShip = true;
 			}
 			break;
-
-		case 'S': // sul
+		case 'S': // Move para sul
 			if (position.lin < lineMax)
 			{
 				position.lin = position.lin + 1;
 				moveShip = true;
 			}
 			break;
-
-		case 'E': // este
+		case 'E': // Move para este
 			if (position.col + size - 1 < columnMax)
 			{
 				position.col = position.col + 1;
 				moveShip = true;
 			}
 			break;
-
-		case 'W': // oeste
+		case 'W': // Move para oeste
 			if (position.col > columnMin)
 			{
 				position.col = position.col - 1;
@@ -73,46 +67,40 @@ bool Ship::move(char direction, bool rotate, unsigned int lineMin, unsigned int 
 	{
 		switch (direction)
 		{
-		case '0': // não move
+		case '0': // Não move
 			break;
-
-		case 'N': // norte
+		case 'N': // Move para norte
 			if (position.lin > columnMin)
 			{
 				position.lin = position.lin - 1;
 				moveShip = true;
 			}
 			break;
-
-		case 'S': // sul
+		case 'S': // Move para sul
 			if (position.lin + size - 1 < columnMax)
 			{
 				position.lin = position.lin + 1;
 				moveShip = true;
 			}
 			break;
-
-		case 'E': // este
+		case 'E': // Move para este
 			if (position.col < lineMax)
 			{
 				position.col = position.col + 1;
 				moveShip = true;
 			}
 			break;
-
-		case 'W': // oeste
+		case 'W': // Move para oeste
 			if (position.col > lineMin)
 			{
 				position.col = position.col - 1;
 				moveShip = true;
 			}
 			break;
-
 		}
 	}
 
-
-	if (rotate) // altera orientação do navio caso rotate seja true
+	if (rotate) // Altera orientação do navio caso rotate seja true
 	{
 		if (orientation == 'H')
 		{
@@ -140,44 +128,38 @@ bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int l
 {
 	bool moveShip = false; // booleano que a função devolve que indica se o navio se move ou não
 
-	/*
-	A função move verifica primeiro se é possível mover o navio uma casa numa direção aleatória.
+	/* A função move verifica primeiro se é possível mover o navio uma casa numa direção aleatória.
 	Se após esta alteração o navio permanecer totalmente dentro do tabuleiro a função move devolve true e altera pelo menos a posição inicial em uma casa.
-	Por fim é testado se também se pode rodar o navio. Caso este permaneça sua totalidade, dentro do tabuleiro depois de rodar, a sua orientação é mudada juntamente com a posição.
-	*/
+	Por fim é testado se também se pode rodar o navio. Caso este permaneça ,na sua totalidade, dentro do tabuleiro depois de rodar, a sua orientação é alterada juntamente com a posição. */
 
 	if (orientation == 'H') // alteração posição do navio
 	{
 		switch (randomPosition())
 		{
-		case '0': // não move
+		case '0': // Não move
 			break;
-
-		case 'N': // norte
+		case 'N': // Move para norte
 			if (position.lin > lineMin)
 			{
 				position.lin = position.lin - 1;
 				moveShip = true;
 			}
 			break;
-
-		case 'S': // sul
+		case 'S': // Move para sul
 			if (position.lin < lineMax)
 			{
 				position.lin = position.lin + 1;
 				moveShip = true;
 			}
 			break;
-
-		case 'E': // este
+		case 'E': // Move para este
 			if (position.col + size - 1 < columnMax)
 			{
 				position.col = position.col + 1;
 				moveShip = true;
 			}
 			break;
-
-		case 'W': // oeste
+		case 'W': // Move para oeste
 			if (position.col > columnMin)
 			{
 				position.col = position.col - 1;
@@ -191,34 +173,30 @@ bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int l
 	{
 		switch (randomPosition())
 		{
-		case '0': // não move
+		case '0': // Não move
 			break;
-
-		case 'N': // norte
+		case 'N': // Move para norte
 			if (position.lin > columnMin)
 			{
 				position.lin = position.lin - 1;
 				moveShip = true;
 			}
 			break;
-
-		case 'S': // sul
+		case 'S': // Move para sul
 			if (position.lin + size - 1 < columnMax)
 			{
 				position.lin = position.lin + 1;
 				moveShip = true;
 			}
 			break;
-
-		case 'E': // este
+		case 'E': // Move para este
 			if (position.col < lineMax)
 			{
 				position.col = position.col + 1;
 				moveShip = true;
 			}
 			break;
-
-		case 'W': // oeste
+		case 'W': // Move para oeste
 			if (position.col > lineMin)
 			{
 				position.col = position.col - 1;
@@ -228,8 +206,7 @@ bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int l
 		}
 	}
 
-
-	if (rotation()) // altera orientação do navio caso rotate seja true
+	if (rotation()) // Altera orientação do navio caso rotate seja true
 	{
 		if (orientation == 'H')
 		{
@@ -255,12 +232,12 @@ bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int l
 
 bool Ship::attack(size_t partNumber)
 {
-	bool acertaship = false; 
+	bool acertaship = false;
 
-	if (partNumber < size) // verifica se a célula do navio existe
+	if (partNumber < size) // Verifica se a célula do navio existe
 	{
-		status.at(partNumber) = tolower(symbol); // converte de letra maiúscula para minúscula
-		acertaship = true; // caso atinja o navio, retorna true
+		status.at(partNumber) = tolower(symbol); // Converte de letra maiúscula para minúscula
+		acertaship = true; // Caso atinja o navio, retorna true
 	}
 
 	return acertaship;
@@ -268,18 +245,18 @@ bool Ship::attack(size_t partNumber)
 
 bool Ship::isDestroyed() const
 {
-	int numlowercase = 0; // número de letras minúculas
-	float halfship = status.length() / 2; // metade do comprimento do barco;
+	int numlowercase = 0; // Número de letras minúculas
+	double halfship = status.length() / 2; // metade do comprimento do barco;
 
 	bool destroyed = false;
 
-	for (size_t i = 0; i < status.length(); i++) // verifica o numero de letras minúsculas que existem na string status
+	for (size_t i = 0; i < status.length(); i++) // Verifica o numero de letras minúsculas que existem na string status
 		if (status.at(i) == tolower(symbol))
 		{
-			numlowercase++;
+		numlowercase++;
 		}
 
-	if (numlowercase >= halfship) // o navio é considerado destruído se pelo menos 50% das suas células foram atingidas por bombas
+	if (numlowercase >= halfship) // O navio é considerado destruído se pelo menos 50% das suas células foram atingidas por bombas
 		destroyed = true;
 
 	return destroyed;

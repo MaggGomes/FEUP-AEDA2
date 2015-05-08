@@ -1,19 +1,24 @@
 #include "board.h"
 #include "bomb.h"
 
+Board::Board()
+{
+	// Default constructor
+}
+
 Board::Board(const string &filename) 
 {
-	ifstream readfile(filename); // lê ficheiro com as configurações do tabuleiro
-	char operatorX; // string que absorve elemento sem importância da primeira linha do ficheiro
+	ifstream readfile(filename); // Lê ficheiro com as configurações do tabuleiro
+	char operatorX; // String que absorve elemento sem importância da primeira linha do ficheiro
 
-	// valores para guardar no vector ships
+	// Valores para guardar no vector ships
 	char symbol, orientation;
 	PositionChar positionchar;
 	unsigned int color, size;
 
-	readfile >> numLines >> operatorX >> numColumns; // lê a primeira linha de código que tem as dimensões do tabuleiro
+	readfile >> numLines >> operatorX >> numColumns; // Lê a primeira linha de código que tem as dimensões do tabuleiro
 
-	while (!readfile.eof()) // lê ficheiro de configuração enquanto não chega ao fim do mesmo
+	while (!readfile.eof()) // Lê ficheiro de configuração enquanto não chega ao fim do mesmo
 	{
 		readfile >> symbol >> size >> positionchar.lin >> positionchar.col >> orientation >> color; // lê valores do navio da primeira linha de texto do ficheiro de configuração
 
@@ -23,21 +28,21 @@ Board::Board(const string &filename)
 
 	readfile.close();
 	
-	vector <vector <int>> boardtemp(numLines, vector <int>(numColumns, -1)); // cria tabuleiro temporário a partir do ficheiro de configurações, onde -1 representa o mar
-	board = boardtemp; // atribui valores ao parâmetro board da class Board
+	vector <vector <int>> boardtemp(numLines, vector <int>(numColumns, -1)); // Cria tabuleiro temporário a partir do ficheiro de configurações, onde -1 representa o mar
+	board = boardtemp; // Atribui valores ao parâmetro board da class Board
 }
 
 int Board::getLines() const
 {
-	return numLines;
+	return numLines; // Devolve número de linhas do tabuleiro
 }
 
 int Board::getColumns() const
 {
-	return numColumns;
+	return numColumns; // Devolve número de colunas do tabuleiro
 }
 
-bool Board::putShip(const Ship &s)
+/*bool Board::putShip(const Ship &s)
 {
 	/*
 	int x = (int)s.position.lin - 65;
@@ -49,7 +54,7 @@ bool Board::putShip(const Ship &s)
 	else if (s.orientation == 'V')
 
 	// Method putShip() must update both the board and the ships attributes of the class.If the ship does not fit inside the board or collides with other already placed ship(s) those attributes must not be updated and the function must return false, returning true otherwise.
-	*/
+	
 }
 
 void Board::moveShips()
@@ -63,10 +68,10 @@ bool Board::attack(const Bomb &b)
 
 void Board::display() const
 {
-	// mostra tabuleiro
+	// Mostra tabuleiro
 }
 
 void Board::show() const
 {
-	// mostra tabuleiro
-}
+	// Mostra tabuleiro
+}*/

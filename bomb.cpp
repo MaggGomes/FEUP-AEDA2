@@ -5,49 +5,45 @@
 #include "board.h"
 #include "functions.h"
 
-Bomb::Bomb(PositionChar targetPosition) // constrói objeto da classe Bomb
+Bomb::Bomb(PositionChar targetPosition) // Constrói objeto da classe Bomb; 
 {
-	PositionInt positionint; // cria struct para armazenar as coordenadas da bomb em formato int
-	positionint.lin = targetPosition.lin - 65; // converte de char maiúsculo para int
-	positionint.col = targetPosition.col - 97; // converte de char minúsculo para int
-	// numLines, numColumns
-	// atribui valores das coordenadas da bomba
+	// Guarda os valores das coordenadas da bomba
 	targetLine = targetPosition.lin;
 	targetColumn = targetPosition.col;
 
-	switch (randomPosition()) // modifica coordenadas da bomba em caso de ela se "desviar" do alvo de modo aleatório
+	/* Modifica coordenadas da bomba em caso de ela se "desviar" do alvo de modo aleatório;
+	   A bomba poderá no final ficar com coordenadas fora dos limites do tabuleiro, pelo que poderá atirada para fora do tabuleiro */
+
+	switch (randomPosition()) // Função randomPosition() altera coordenadas da bomba aleatoriamente
 	{
-	case '0': // mantém coordenadas originais
+	case '0': // Mantém coordenadas originais
 		break;
-	case 'N': // norte
-		if (targetPosition.lin != 'A') // a bomba não pode ter coordenada de linha menor que 'A' para nao sair para fora do tabuleiro
-			targetLine = targetPosition.lin - 1;
+	case 'N': // Norte
+		targetLine = targetLine - 1;
 		break;
-	case 'S': // sul
-		if (targetLine != 'A')
-			targetLine = targetPosition.lin + 1;
+	case 'S': // Sul
+		targetLine = targetLine + 1;
 		break;
-	case 'E': // este
-		targetColumn = targetPosition.col + 1;
+	case 'E': // Este
+		targetColumn = targetColumn + 1;
 		break;
-	case 'W': // oeste
-		if (targetColumn != 'a') // a bomba não pode ter coordenada de coluna menor que 'a' para nao sair para fora do tabuleiro
-			targetColumn = targetPosition.col - 1;
+	case 'W': // Oeste
+		targetColumn = targetColumn - 1;
 		break;
 	}
 }
 
 PositionChar Bomb::getTargetPosition() const
 {
-	PositionChar temp; // struct que a funçao vai devolver 
+	PositionChar targetposition; // Struct que a funçao vai devolver 
 
-	temp.lin = targetLine;
-	temp.col = targetColumn;
+	targetposition.lin = targetLine;
+	targetposition.col = targetColumn;
 
-	return temp;
+	return targetposition;
 }
 
-void Bomb::show() const // mostra valores das coordenadas para debugging
+void Bomb::show() const // Mostra valores das coordenadas para debugging
 {
 	cout << "Coordenada da linha: " << targetLine << endl << "Coordenada da coluna: " << targetColumn << endl << endl;
 }

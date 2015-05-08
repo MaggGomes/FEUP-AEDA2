@@ -5,7 +5,7 @@
 
 using namespace std;
 
-// códigos de cores
+// Códigos de cores
 
 #define BLACK 0
 #define BLUE 1
@@ -24,7 +24,7 @@ using namespace std;
 #define YELLOW 14
 #define WHITE 15
 
-const vector < vector <char> > coordenadas = // vector com as letras das coordenadas
+const vector < vector <char> > coordenadas = // Vector com as letras das coordenadas
 { { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' },
 { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' } };
 

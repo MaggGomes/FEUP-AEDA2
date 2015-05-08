@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <locale>
 
 #include "variables.h"
 #include "functions.h"
@@ -12,8 +13,9 @@ using namespace std;
 
 int main()
 {
-	
-	impressaoTitulo(); // imprime título do jogo
+	setlocale(LC_ALL, "Portuguese");
+
+	impressaoTitulo(); // Imprime título do jogo
 	
 	char symbol = 'F';
 	PositionChar position;
@@ -22,16 +24,21 @@ int main()
 	char orientation = 'H';
 	unsigned int size = 5;
 	unsigned int color = 0;
-		
+
+	int dir = 'S';
+	
+	
 	Bomb bomba(position);
 
 	Ship navio(symbol, position, orientation, size, color);
 
-	navio.show();
+	
 
 	cout << endl;
 
-	navio.moveRand(0, 0, 9, 9); //
+	navio.moveRand(0, 0, 5, 5);
+
+	
 
 	navio.show();
 
