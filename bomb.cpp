@@ -5,18 +5,18 @@
 #include "board.h"
 #include "functions.h"
 
-Bomb::Bomb(PositionChar targetPosition) // ConstrÛi objeto da classe Bomb; 
+Bomb::Bomb(PositionChar targetPosition) // Constr√≥i objeto da classe Bomb; 
 {
 	// Guarda os valores das coordenadas da bomba
 	targetLine = targetPosition.lin;
 	targetColumn = targetPosition.col;
 
-	/* Modifica coordenadas da bomba em caso de ela se "desviar" do alvo de modo aleatÛrio;
-	   A bomba poder· no final ficar com coordenadas fora dos limites do tabuleiro, pelo que poder· atirada para fora do tabuleiro */
+	/* Modifica coordenadas da bomba em caso de ela se "desviar" do alvo de modo aleat√≥rio;
+	   A bomba poder√° no final ficar com coordenadas fora dos limites do tabuleiro, pelo que poder√° atirada para fora do tabuleiro */
 
-	switch (randomPosition()) // FunÁ„o randomPosition() altera coordenadas da bomba aleatoriamente
+	switch (randomPosition()) // Fun√ß√£o randomPosition() altera coordenadas da bomba aleatoriamente
 	{
-	case '0': // MantÈm coordenadas originais
+	case '0': // Mant√©m coordenadas originais
 		break;
 	case 'N': // Norte
 		targetLine = targetLine - 1;
@@ -35,7 +35,7 @@ Bomb::Bomb(PositionChar targetPosition) // ConstrÛi objeto da classe Bomb;
 
 PositionChar Bomb::getTargetPosition() const
 {
-	PositionChar targetposition; // Struct que a funÁao vai devolver 
+	PositionChar targetposition; // Struct que a fun√ßao vai devolver 
 
 	targetposition.lin = targetLine;
 	targetposition.col = targetColumn;

@@ -1,77 +1,142 @@
+#include <iostream>
+
 #include "board.h"
-#include "bomb.h"
+#include "ship.h"
 
 Board::Board()
 {
-	// Default constructor
+	vector<Ship> navios;
+	vector<vector<int>> tab;
+
+	numLines = 0;
+	numColumns = 0;
+	ships = navios;
+	board = tab;
 }
 
-Board::Board(const string &filename) 
+Board::Board(const string &filename)
 {
-	ifstream readfile(filename); // Lê ficheiro com as configurações do tabuleiro
-	char operatorX; // String que absorve elemento sem importância da primeira linha do ficheiro
+	ifstream readfile(filename); // LÃª ficheiro com as configuraÃ§Ãµes do tabuleiro
+	char operatorX; // String que absorve elemento sem importÃ¢ncia da primeira linha do ficheiro
 
 	// Valores para guardar no vector ships
 	char symbol, orientation;
 	PositionChar positionchar;
 	unsigned int color, size;
 
-	readfile >> numLines >> operatorX >> numColumns; // Lê a primeira linha de código que tem as dimensões do tabuleiro
+	readfile >> numLines >> operatorX >> numColumns; // LÃª a primeira linha de cÃ³digo que tem as dimensÃµes do tabuleiro
 
-	while (!readfile.eof()) // Lê ficheiro de configuração enquanto não chega ao fim do mesmo
+	while (!readfile.eof()) // LÃª ficheiro de configuraÃ§Ã£o enquanto nÃ£o chega ao fim do mesmo
 	{
-		readfile >> symbol >> size >> positionchar.lin >> positionchar.col >> orientation >> color; // lê valores do navio da primeira linha de texto do ficheiro de configuração
+		readfile >> symbol >> size >> positionchar.lin >> positionchar.col >> orientation >> color; // lÃª valores do navio da primeira linha de texto do ficheiro de configuraÃ§Ã£o
 
-		Ship navio(symbol, positionchar, orientation, size, color); // constrói objeto da classe Ship com as suas características
+		Ship navio(symbol, positionchar, orientation, size, color); // ConstrÃ³i objeto da classe Ship com as suas caracterÃ­sticas
 		ships.push_back(navio);
 	}
 
 	readfile.close();
-	
-	vector <vector <int>> boardtemp(numLines, vector <int>(numColumns, -1)); // Cria tabuleiro temporário a partir do ficheiro de configurações, onde -1 representa o mar
-	board = boardtemp; // Atribui valores ao parâmetro board da class Board
+
+	vector <vector <int>> boardtemp(numLines, vector <int>(numColumns, -1)); // Cria tabuleiro temporÃ¡rio a partir do ficheiro de configuraÃ§Ãµes, onde -1 representa o mar
+	board = boardtemp; // Atribui valores ao parÃ¢metro board da class Board
 }
 
 int Board::getLines() const
 {
-	return numLines; // Devolve número de linhas do tabuleiro
+	return numLines; // Devolve nÃºmero de linhas do tabuleiro
 }
 
 int Board::getColumns() const
 {
-	return numColumns; // Devolve número de colunas do tabuleiro
+	return numColumns; // Devolve nÃºmero de colunas do tabuleiro
 }
 
-/*bool Board::putShip(const Ship &s)
+bool Board::putShip(const Ship &s)
 {
-	/*
 	int x = (int)s.position.lin - 65;
 	int y = (int)s.position.col - 97;
 
+
 	if (s.orientation == 'H')
-	if ((x <= numLines) && (y + s.size <= numColumns))
-	for ()
+	{
+		if ((x > numLines) || (y + s.size - 1 > numColumns))
+			return false;
+		else
+		{
+			for (size_t i = 0; i < s.size; i++)
+			{
+				if (board[x][y + i] != -1)
+					return false;
+			}
+
+		}
+
+		return true;
+	}
 	else if (s.orientation == 'V')
+	{
+		if ((x + s.size - 1 > numLines) || (y > numColumns))
+			return false;
+		else
+		{
+			for (size_t i = 0; i < s.size; i++)
+			{
+				if (board[x + i][y] != -1)
+					return false;
+		}
 
-	// Method putShip() must update both the board and the ships attributes of the class.If the ship does not fit inside the board or collides with other already placed ship(s) those attributes must not be updated and the function must return false, returning true otherwise.
-	
+		}
+	}
+
 }
 
-void Board::moveShips()
+void Board::moveShips() // FALTA TESTAR
 {
-	// Move navios
-}
-bool Board::attack(const Bomb &b)
-{
-	// Coloca bomba no tabuleiro
+	ships[0i.moveRand(0, 0, numLines, numColumns);
+	\S
+
+	/*for (size_t i = 0; ships[i] < ships.size; i++)
+		if ((ships[i].moveRand(0, 0, numLines, numColumns)) == true*/
+			
 }
 
+
+bool Board::attack(const Bomb &b) // FALTA COMPLETAR
+{
+	PositionInt coordbombanum;
+	coordbombanum.lin = b.getTargetPosition().lin - 65; // Coordenada da linha em formato unsigned int
+	coordbombanum.col = b.getTargetPosition().col - 97; // Coordenada da coluna em formato unsigned int
+
+	if (board[coordbombanum.lin][coordbombanum.col] == -1)
+	{
+		cout << "FALHOU O ALVO!!" << endl;
+		return false;
+	}
+
+	else if (coordbombanum.lin < 0 || coordbombanum.col < 0 || coordbombanum.lin >= numLines || coordbombanum.col >= numColumns)
+	{
+		cout << "FALHOU O ALVO!!" << endl;
+		return false;
+	}
+	else
+	{
+
+		if 
+
+
+
+		board[coordbombanum.lin][coordbombanum.col]
+
+
+	}
+}
+
+/*
 void Board::display() const
 {
-	// Mostra tabuleiro
+// Mostra tabuleiro
 }
 
 void Board::show() const
 {
-	// Mostra tabuleiro
+// Mostra tabuleiro
 }*/
