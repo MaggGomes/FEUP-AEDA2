@@ -1,7 +1,9 @@
 #include <iostream>
+#include <iomanip>
 
 #include "board.h"
 #include "ship.h"
+#include "functions.h"
 
 Board::Board()
 {
@@ -69,7 +71,7 @@ bool Board::putShip(const Ship &s, vector<vector<int>> &b, const int &i)
 		}
 		for (size_t k = 0; k < s.getSize(); k++)
 		{
-			b[x][y + k] = i)
+			b[x][y + k] = i;
 		}
 		return true;
 	}
@@ -88,7 +90,7 @@ bool Board::putShip(const Ship &s, vector<vector<int>> &b, const int &i)
 
 		for (size_t k = 0; k < s.getSize(); k++)
 		{
-			b[x + k][y] = i)
+			b[x + k][y] = i;
 		}
 		return true;
 	}
@@ -121,7 +123,7 @@ void Board::moveShips()
 // APAGAR SE NAO HOUVER ERROS AO CORRER O MOVESHIPS
 /*bool Board::checkBoard()
 {
-	bool update_board = false; // Variável que devolve true caso seja possível alterar a posição dos navios dentro do tabuleiro
+bool update_board = false; // Variável que devolve true caso seja possível alterar a posição dos navios dentro do tabuleiro
 
 }*/
 
@@ -130,34 +132,90 @@ bool Board::attack(const Bomb &b) // FALTA COMPLETAR
 	PositionInt coordbombanum;
 	coordbombanum.lin = b.getTargetPosition().lin - 65; // Coordenada da linha em formato unsigned int
 	coordbombanum.col = b.getTargetPosition().col - 97; // Coordenada da coluna em formato unsigned int
+	size_t indexShip; // Índice do navio no vector ships
+	size_t partNumber; // Índice da célula do navio que é atacada
 
-	if (board.at(coordbombanum.lin).at(coordbombanum.col) == -1)
+	if (board.at(coordbombanum.lin).at(coordbombanum.col) == -1) // Verifica se a bomba é lançada ao mar
 	{
-		cout << "FALHOU O ALVO!!" << endl;
 		return false;
 	}
 
-	else if (coordbombanum.lin < 0 || coordbombanum.col < 0 || coordbombanum.lin >= numLines || coordbombanum.col >= numColumns)
+	else if (coordbombanum.lin < 0 || coordbombanum.col < 0 || coordbombanum.lin >= numLines || coordbombanum.col >= numColumns) // Verifica se a bomba é lançada para fora do tabuleiro
 	{
-		cout << "FALHOU O ALVO!!" << endl;
 		return false;
 	}
 	else
 	{
+		indexShip = board.at(coordbombanum.lin).at(coordbombanum.col); // Inicializa valor do índice do navio no vector ships
 
-		ships.at(board.at(coordbombanum.lin).at(coordbombanum.col)).getOrientation
+		if (ships.at(board.at(coordbombanum.lin).at(coordbombanum.col)).getOrientation == 'H')
+		{
+			do
+			{
+				int i = 0;
+				partNumber = i;
+				coordbombanum.col = coordbombanum.col - i;
+				i++;
+			} while ((board.at(coordbombanum.lin).at(coordbombanum.col) != -1) && (coordbombanum.col >= 0));
 
+		}
 
+		else if (ships.at(board.at(coordbombanum.lin).at(coordbombanum.col)).getOrientation == 'V')
+		{
+			do
+			{
+				int i = 0;
+				partNumber = i;
+				coordbombanum.lin = coordbombanum.lin - i;
+				i++;
+			} while ((board.at(coordbombanum.lin).at(coordbombanum.col) != -1) && (coordbombanum.lin >= 0));
+
+		}
+
+		ships.at(indexShip).attack(partNumber); // Faz o "ataque" ao navio
+
+		return true;
 	}
 }
 
-/*
+
 void Board::display() const
 {
-// Mostra tabuleiro
+	int ll = (int)'A';
+	int lc = (int)'a';
+
+	cout << setw(2) << " ";
+	for (int i = 0; i < numColumns; i++)
+		cout << setw(2) << (char)(lc + i);
+	cout << endl;
+
+	for (int i = 0; i < numLines; i++)
+	{
+		cout << setw(2) << (char)(ll + i);
+		for (int j = 0; j < numColumns; j++)
+		{
+			cout << setw(2) << board[i][j];
+		}
+		cout << endl;
 }
 
 void Board::show() const
 {
-// Mostra tabuleiro
-}*/
+	int ll = (int)'A';
+	int lc = (int)'a';
+
+	cout << setw(2) << " ";
+	for (int i = 0; i < numColumns; i++)
+		cout << setw(2) << (char)(lc + i);
+	cout << endl;
+
+	for (int i = 0; i < numLines; i++)
+	{
+		cout << setw(2) << (char)(ll + i);
+		for (int j = 0; j < numColumns; j++)
+		{
+			cout << setw(2) << board[i][j];
+		}
+		cout << endl;
+	}
+}

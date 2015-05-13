@@ -3,6 +3,7 @@
 #include <windows.h>
 #include <cstddef>
 #include <ctime>
+#include <fstream>
 
 #include "functions.h"
 #include "variables.h"
@@ -104,6 +105,29 @@ bool rotation() // Roda o navio (true=roda,false=mantém a orientação)
 	return rotate;
 
 }
+
+string initiatePlayer()
+{
+
+	string playerName, filename;
+	ifstream readfile;
+
+	do
+	{
+		cout << "NOME FICHEIRO CONFIGURACAO: ";
+		getline(cin, filename);
+		readfile.open(filename);
+		if (!readfile.fail())
+			cout << "Ficheiro aberto com sucesso!" << endl << endl;
+		else
+			cout << "Ficheiro inexistente! Tente novamente." << endl << endl;
+		} while (readfile.fail());
+
+	string player = "abc";
+
+	return player;
+}
+
 
 /*Player getPlayerBoard()
 {

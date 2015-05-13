@@ -3,12 +3,12 @@
 Player::Player(string playerName, string boardFilename) // FALTA - corrigir este construtor
 {
     name = playerName;
-	Board board(boardFilename);
+	// Board board(boardFilename);
 }
 
 void Player::showBoard() const
 {
-	board.display();
+	// board.display();
 }
 
 /*Bomb Player::getBomb() const

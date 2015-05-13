@@ -27,7 +27,7 @@ public:
 private:
 	int numLines, numColumns;        
 	vector<Ship> ships;              // Vector com os navios que são colocados no tabuleiro
-	vector<vector<int>> board;       // Cada elemento indica o índice de um navio no vector "ships"; -1 representa o mar
+	// vector<vector<int>> board;       // Cada elemento indica o índice de um navio no vector "ships"; -1 representa o mar
 };
 
 #endif // BOARD_H

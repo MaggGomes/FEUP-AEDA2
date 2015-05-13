@@ -10,7 +10,7 @@ public:
 	char getOrientation() const; // Devolve valor da orientação do navio
 	bool move(char direction, bool rotate, unsigned int lineMin, unsigned int columnMin, unsigned int lineMax, unsigned int columnMax); // Move o navio (para debugging)
 	bool moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int lineMax, unsigned int columnMax); // Move o navio aleatoriamente
-	bool attack(size_t partNumber); //partNumber = {0,1,…, tamanho-1}
+	bool attack(size_t partNumber); // partNumber = {0,1,…, tamanho-1}
 	bool isDestroyed() const;       // Verifica se o navio está destruído
 	PositionInt getPosition() const;   // Devolve tamanho do navio
 	char getSymbol() const;
