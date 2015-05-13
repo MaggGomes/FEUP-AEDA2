@@ -18,6 +18,11 @@ Ship::Ship(char symbol, PositionChar position, char orientation, unsigned int si
 	status = statustemp; // atribui a informação da variável temporária statustemp à variável status da classe Ship
 }
 
+char Ship::getOrientation() const
+{
+	return orientation;
+}
+
 bool Ship::move(char direction, bool rotate, unsigned int lineMin, unsigned int columnMin, unsigned int lineMax, unsigned int columnMax)
 {
 	bool moveShip = false; // booleano que a função devolve que indica se o navio se move ou não
@@ -255,11 +260,26 @@ bool Ship::isDestroyed() const
 		{
 		numlowercase++;
 		}
-
 	if (numlowercase >= halfship) // O navio é considerado destruído se pelo menos 50% das suas células foram atingidas por bombas
 		destroyed = true;
 
 	return destroyed;
+}
+
+PositionInt Ship::getPosition() const
+{
+	return position;
+}
+
+char Ship::getSymbol() const
+{
+	return symbol;
+}
+
+
+int Ship::getSize() const
+{
+	return size;
 }
 
 void Ship::show() const

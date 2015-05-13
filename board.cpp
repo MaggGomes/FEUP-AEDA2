@@ -50,55 +50,80 @@ int Board::getColumns() const
 	return numColumns; // Devolve número de colunas do tabuleiro
 }
 
-bool Board::putShip(const Ship &s)
+bool Board::putShip(const Ship &s, vector<vector<int>> &b, const int &i)
 {
-	int x = (int)s.position.lin - 65;
-	int y = (int)s.position.col - 97;
+	int x = (int)s.getPosition().lin - 65;
+	int y = (int)s.getPosition().col - 97;
 
-
-	if (s.orientation == 'H')
+	if (s.getOrientation() == 'H')
 	{
-		if ((x > numLines) || (y + s.size - 1 > numColumns))
+		if ((x > numLines) || (y + s.getSize() - 1 > numColumns))
 			return false;
 		else
 		{
-			for (size_t i = 0; i < s.size; i++)
+			for (size_t j = 0; j < s.getSize(); j++)
 			{
-				if (board[x][y + i] != -1)
+				if (b[x][y + j] != -1)
 					return false;
 			}
-
 		}
-
+		for (size_t k = 0; k < s.getSize(); k++)
+		{
+			b[x][y + k] = i)
+		}
 		return true;
 	}
-	else if (s.orientation == 'V')
+	else if (s.getOrientation() == 'V')
 	{
-		if ((x + s.size - 1 > numLines) || (y > numColumns))
+		if ((x + s.getSize() - 1 > numLines) || (y > numColumns))
 			return false;
 		else
 		{
-			for (size_t i = 0; i < s.size; i++)
+			for (size_t j = 0; j < s.getSize(); j++)
 			{
-				if (board[x + i][y] != -1)
+				if (b[x + j][y] != -1)
 					return false;
+			}
 		}
 
+		for (size_t k = 0; k < s.getSize(); k++)
+		{
+			b[x + k][y] = i)
 		}
+		return true;
 	}
 
 }
 
-void Board::moveShips() // FALTA TESTAR
+void Board::moveShips()
 {
-	ships[0i.moveRand(0, 0, numLines, numColumns);
-	\S
+	vector<Ship> shipstemp = ships; // Cria vector ships temporário
+	vector <vector <int>> boardtemp(numLines, vector <int>(numColumns, -1)); // Cria tabuleiro temporário
+	bool validade = true;
 
-	/*for (size_t i = 0; ships[i] < ships.size; i++)
-		if ((ships[i].moveRand(0, 0, numLines, numColumns)) == true*/
-			
+	for (size_t i = 0; shipstemp[i] < shipstemp.size; i++)
+		shipstemp[i].moveRand(0, 0, numLines, numColumns);
+
+	for (size_t i = 0; i < shipstemp.size(); i++)
+	{
+		putShip(shipstemp[i], boardtemp, i);
+		if (putShip(shipstemp[i], boardtemp, i) != true)
+		{
+			validade = false;
+			break;
+		}
+	}
+
+	if (validade)
+		ships = shipstemp;
 }
 
+// APAGAR SE NAO HOUVER ERROS AO CORRER O MOVESHIPS
+/*bool Board::checkBoard()
+{
+	bool update_board = false; // Variável que devolve true caso seja possível alterar a posição dos navios dentro do tabuleiro
+
+}*/
 
 bool Board::attack(const Bomb &b) // FALTA COMPLETAR
 {
@@ -106,7 +131,7 @@ bool Board::attack(const Bomb &b) // FALTA COMPLETAR
 	coordbombanum.lin = b.getTargetPosition().lin - 65; // Coordenada da linha em formato unsigned int
 	coordbombanum.col = b.getTargetPosition().col - 97; // Coordenada da coluna em formato unsigned int
 
-	if (board[coordbombanum.lin][coordbombanum.col] == -1)
+	if (board.at(coordbombanum.lin).at(coordbombanum.col) == -1)
 	{
 		cout << "FALHOU O ALVO!!" << endl;
 		return false;
@@ -120,11 +145,7 @@ bool Board::attack(const Bomb &b) // FALTA COMPLETAR
 	else
 	{
 
-		if 
-
-
-
-		board[coordbombanum.lin][coordbombanum.col]
+		ships.at(board.at(coordbombanum.lin).at(coordbombanum.col)).getOrientation
 
 
 	}

@@ -8,14 +8,14 @@
 
 using namespace std;
 
-// Declaração de funções
+// DeclaraÃ§Ã£o de funÃ§Ãµes
 
-void clrscr(void); // Limpa o ecrâ
+void clrscr(void); // Limpa o ecrÃ¢
 void gotoxy(int x, int y); // Posiciona o cursor na coluna 'x', linha 'y'
-void setcolor(unsigned int color, unsigned int background_color); // Definição da cor do texto & background
-void impressaoTitulo(); // Título do jogo
-char randomPosition(); // (0=“não se move”, 1=‘N’, 2=‘S’, 3=’E’, 4=’W’)
-bool rotation(); // Roda o navio (true=roda,false=mantém a orientação)
+void setcolor(unsigned int color, unsigned int background_color); // DefiniÃ§Ã£o da cor do texto & background
+void impressaoTitulo(); // TÃ­tulo do jogo
+char randomPosition(); // (0=â€œnÃ£o se moveâ€, 1=â€˜Nâ€™, 2=â€˜Sâ€™, 3=â€™Eâ€™, 4=â€™Wâ€™)
+bool rotation(); // Roda o navio (true=roda,false=mantÃ©m a orientaÃ§Ã£o)
 
 
 
