@@ -8,6 +8,8 @@
 #include "functions.h"
 #include "variables.h"
 
+using namespace std;
+
 // Implementação das funções
 
 void clrscr(void)
@@ -55,7 +57,7 @@ void impressaoTitulo()
 
 	setcolor(7, 0);
 
-	cout << "Bem-vindo ao jogo Battleship!" << endl << endl;
+	cout << endl;
 }
 
 char randomPosition() // (0=“no move”, 1=‘N’, 2=‘S’, 3=’E’, 4=’W’)
@@ -89,7 +91,7 @@ char randomPosition() // (0=“no move”, 1=‘N’, 2=‘S’, 3=’E’, 4=�
 bool rotation() // Roda o navio (true=roda,false=mantém a orientação)
 {
 	bool rotate = true; // Variável a devolver que indica se a orientação será ou não alterada
-	srand((unsigned int)time(NULL)); 
+	srand((unsigned int)time(NULL));
 
 	int change = rand() % 2; // Caso seja 0 o navio "roda", caso seja 1 o navio mantém a orientação
 	switch (change)
@@ -103,13 +105,38 @@ bool rotation() // Roda o navio (true=roda,false=mantém a orientação)
 	}
 
 	return rotate;
-
 }
 
-string initiatePlayer()
+string getPlayername()
 {
+	string playerName;
 
-	string playerName, filename;
+	do
+	{
+		cout << "NICKNAME JOGADOR (comprimento entre 3 e 8 caracteres): ";
+		getline(cin, playerName);
+
+		if (cin.fail() || playerName.length() < 3 || playerName.length() > 8)
+		{
+			setcolor(4, 0);
+			cout << "ERRO: Nickname invalido! Tente novamente." << endl << endl;
+			setcolor(7, 0);
+		}
+	
+		else
+		{
+			setcolor(2, 0);
+			cout << "Nickname guardado com sucesso!" << endl << endl;
+			setcolor(7, 0);
+		}
+	} while (cin.fail() || playerName.length() < 3 || playerName.length() > 8);
+
+	return playerName;
+}
+
+string getFilename()
+{
+	string filename;
 	ifstream readfile;
 
 	do
@@ -117,39 +144,22 @@ string initiatePlayer()
 		cout << "NOME FICHEIRO CONFIGURACAO: ";
 		getline(cin, filename);
 		readfile.open(filename);
+
 		if (!readfile.fail())
+		{
+			setcolor(2, 0);
 			cout << "Ficheiro aberto com sucesso!" << endl << endl;
+			setcolor(7, 0);
+		}
 		else
-			cout << "Ficheiro inexistente! Tente novamente." << endl << endl;
-		} while (readfile.fail());
+		{
+			setcolor(4, 0);
+			cout << "ERRO: Ficheiro inexistente! Tente novamente." << endl << endl;
+			setcolor(7, 0);
+		}
+	} while (readfile.fail());
 
-	string player = "abc";
+	readfile.close();
 
-	return player;
+	return filename;
 }
-
-
-/*Player getPlayerBoard()
-{
-	/*string ab, cd;
-
-
-	string infilename;
-	do
-	{
-		cout << "NOME FICHEIRO CONFIGURACAO: ";
-		getline(cin, filename);
-		leficheiro.open(filename);
-		if (!leficheiro.fail())
-			cout << "Ficheiro aberto com sucesso!" << endl << endl;
-		else
-			cout << "Ficheiro inexistente! Tente novamente." << endl << endl;
-		setcolor(7, 0);
-	} while (leficheiro.fail());
-
-
-	Player jogador(ab, cd);
-
-	return jogador;
-	
-}*/

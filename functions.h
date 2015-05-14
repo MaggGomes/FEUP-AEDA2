@@ -16,6 +16,7 @@ void setcolor(unsigned int color, unsigned int background_color); // Definição
 void impressaoTitulo(); // Título do jogo
 char randomPosition(); // (0=“não se move”, 1=‘N’, 2=‘S’, 3=’E’, 4=’W’)
 bool rotation(); // Roda o navio (true=roda,false=mantém a orientação)
-string initiatePlayer(); // Pergunta pelo nome do jogador e pelo nome do ficheiro de configuração do tabuleiro
+string getPlayername(); // Pergunta pelo nome do jogador
+string getFilename(); // Pergunta pelo nome do ficheiro de configuração do tabuleiro
 
 #endif // FUNCTIONS_H

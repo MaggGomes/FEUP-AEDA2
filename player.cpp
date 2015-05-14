@@ -1,14 +1,18 @@
 #include "player.h"
 
-Player::Player(string playerName, string boardFilename) // FALTA - corrigir este construtor
+Player::Player(string boardFilename, string playerName) : board(Board(boardFilename))
 {
     name = playerName;
-	// Board board(boardFilename);
+}
+
+string Player::getPlayerNam() const
+{
+		return name;
 }
 
 void Player::showBoard() const
 {
-	// board.display();
+	board.display();
 }
 
 /*Bomb Player::getBomb() const

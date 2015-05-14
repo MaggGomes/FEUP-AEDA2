@@ -13,7 +13,6 @@ using namespace std;
 class Board
 {
 public:
-	Board();
 	Board(const string &filename);   // Carrega o tabuleiro do ficheiro 'filename'
 	int getLines() const; // Devolve número de linhas do tabuleiro
 	int getColumns() const; // Devolve número de colunas do tabuleiro
@@ -27,7 +26,7 @@ public:
 private:
 	int numLines, numColumns;        
 	vector<Ship> ships;              // Vector com os navios que são colocados no tabuleiro
-	// vector<vector<int>> board;       // Cada elemento indica o índice de um navio no vector "ships"; -1 representa o mar
+	vector<vector<int>> board;       // Cada elemento indica o índice de um navio no vector "ships"; -1 representa o mar
 };
 
 #endif // BOARD_H

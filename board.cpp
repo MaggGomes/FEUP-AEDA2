@@ -5,17 +5,6 @@
 #include "ship.h"
 #include "functions.h"
 
-Board::Board()
-{
-	vector<Ship> navios;
-	vector<vector<int>> tab;
-
-	numLines = 0;
-	numColumns = 0;
-	ships = navios;
-	board = tab;
-}
-
 Board::Board(const string &filename)
 {
 	ifstream readfile(filename); // Lê ficheiro com as configurações do tabuleiro
@@ -94,7 +83,7 @@ bool Board::putShip(const Ship &s, vector<vector<int>> &b, const int &i)
 		}
 		return true;
 	}
-
+	return true;
 }
 
 void Board::moveShips()
@@ -103,7 +92,7 @@ void Board::moveShips()
 	vector <vector <int>> boardtemp(numLines, vector <int>(numColumns, -1)); // Cria tabuleiro temporário
 	bool validade = true;
 
-	for (size_t i = 0; shipstemp[i] < shipstemp.size; i++)
+	for (size_t i = 0; i < shipstemp.size(); i++)
 		shipstemp[i].moveRand(0, 0, numLines, numColumns);
 
 	for (size_t i = 0; i < shipstemp.size(); i++)
@@ -148,7 +137,7 @@ bool Board::attack(const Bomb &b) // FALTA COMPLETAR
 	{
 		indexShip = board.at(coordbombanum.lin).at(coordbombanum.col); // Inicializa valor do índice do navio no vector ships
 
-		if (ships.at(board.at(coordbombanum.lin).at(coordbombanum.col)).getOrientation == 'H')
+		if (ships.at(board.at(coordbombanum.lin).at(coordbombanum.col)).getOrientation() == 'H')
 		{
 			do
 			{
@@ -160,7 +149,7 @@ bool Board::attack(const Bomb &b) // FALTA COMPLETAR
 
 		}
 
-		else if (ships.at(board.at(coordbombanum.lin).at(coordbombanum.col)).getOrientation == 'V')
+		else if (ships.at(board.at(coordbombanum.lin).at(coordbombanum.col)).getOrientation() == 'V')
 		{
 			do
 			{
@@ -178,25 +167,45 @@ bool Board::attack(const Bomb &b) // FALTA COMPLETAR
 	}
 }
 
-
-void Board::display() const
+void Board::display() const // FALTA COMPLETAR - falta alterar de maiúscula para minúscula na impressão do navio nas células que tenham sido atingidas por alguma bomba
 {
-	int ll = (int)'A';
-	int lc = (int)'a';
+	clrscr(); // Limpa ecrâ
 
-	cout << setw(2) << " ";
-	for (int i = 0; i < numColumns; i++)
-		cout << setw(2) << (char)(lc + i);
-	cout << endl;
-
-	for (int i = 0; i < numLines; i++)
+	for (size_t i = 0; i < board.size(); i++) // Imprime coordenadas das colunas da primeira linha do tabuleiro
 	{
-		cout << setw(2) << (char)(ll + i);
-		for (int j = 0; j < numColumns; j++)
+		gotoxy(i * 2 + 1, 0);
+		setcolor(15, 0);
+		cout << coordenadas.at(0).at(i);
+	}
+
+	for (size_t i = 0; i < board.size(); i++) // Imprime coordenadas das linhas da primeira coluna do tabuleiro
+	{
+		gotoxy(0, i + 1);
+		setcolor(15, 0);
+		cout << coordenadas.at(1).at(i);
+	}
+
+	for (size_t i = 0; i < numLines; i++) // Impressão do tabuleiro
+	{
+		for (size_t j = 0; j < numColumns; j++)
 		{
-			cout << setw(2) << board[i][j];
+			gotoxy(j * 2 + 1, i + 1);
+			if (board.at(i).at(j) == -1)
+			{
+				setcolor(9, 7);
+				cout << '.' << " "; // Impressão caso seja "mar" (-1)
+			}
+
+			else
+			{
+				setcolor(ships.at(board.at(i).at(j)).getColor(), 7);
+				cout << ships.at(board.at(i).at(j)).getSymbol() << " ";
+			}
 		}
-		cout << endl;
+	}
+	cout << endl << endl;
+
+	setcolor(7, 0);
 }
 
 void Board::show() const

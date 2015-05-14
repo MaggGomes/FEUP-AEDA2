@@ -13,8 +13,9 @@ public:
 	bool attack(size_t partNumber); // partNumber = {0,1,…, tamanho-1}
 	bool isDestroyed() const;       // Verifica se o navio está destruído
 	PositionInt getPosition() const;   // Devolve tamanho do navio
-	char getSymbol() const;
-	int getSize() const;               // Devolve posiçao do navio
+	char getSymbol() const; // Devolve símbolo do navio
+	unsigned int getSize() const; // Devolve tamanho do navio
+	unsigned int getColor() const; // Devolve cor do navio
 	void show() const;              // Mostra os atributos do navio (para debugging)
 
 private:

@@ -7,7 +7,8 @@
 class Player
 {
 public:
-	Player(string playerName, string boardFilename);
+	Player(string boardFilename, string playerName);
+	string getPlayerNam() const; // Mostra nome do jogador (para debugging)
 	void showBoard() const; // Mostra o tabuleiro do jogador
 	Bomb getBomb() const; // Pergunta pelas coordenadas da bomba e coloca bomba
 	void attackBoard(const Bomb &b); // "Recebe" a bomba do adversário

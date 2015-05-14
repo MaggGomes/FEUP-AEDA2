@@ -276,10 +276,14 @@ char Ship::getSymbol() const
 	return symbol;
 }
 
-
-int Ship::getSize() const
+unsigned int Ship::getSize() const
 {
 	return size;
+}
+
+unsigned int Ship::getColor() const
+{
+	return color;
 }
 
 void Ship::show() const
