@@ -113,20 +113,20 @@ string getPlayername()
 
 	do
 	{
-		cout << "NICKNAME JOGADOR (comprimento entre 3 e 8 caracteres): ";
+		cout << ">> NICKNAME JOGADOR (entre 3 e 8 caracteres): ";
 		getline(cin, playerName);
 
 		if (cin.fail() || playerName.length() < 3 || playerName.length() > 8)
 		{
 			setcolor(4, 0);
-			cout << "ERRO: Nickname invalido! Tente novamente." << endl << endl;
+			cout << ":: ERRO: Nickname invalido! Tente novamente." << endl << endl;
 			setcolor(7, 0);
 		}
 	
 		else
 		{
 			setcolor(2, 0);
-			cout << "Nickname guardado com sucesso!" << endl << endl;
+			cout << ":: Nickname guardado com sucesso!" << endl << endl;
 			setcolor(7, 0);
 		}
 	} while (cin.fail() || playerName.length() < 3 || playerName.length() > 8);
@@ -141,20 +141,20 @@ string getFilename()
 
 	do
 	{
-		cout << "NOME FICHEIRO CONFIGURACAO: ";
+		cout << ">> NOME FICHEIRO CONFIGURACAO: ";
 		getline(cin, filename);
 		readfile.open(filename);
 
 		if (!readfile.fail())
 		{
 			setcolor(2, 0);
-			cout << "Ficheiro aberto com sucesso!" << endl << endl;
+			cout << ":: Ficheiro aberto com sucesso!" << endl << endl;
 			setcolor(7, 0);
 		}
 		else
 		{
 			setcolor(4, 0);
-			cout << "ERRO: Ficheiro inexistente! Tente novamente." << endl << endl;
+			cout << ":: ERRO: Ficheiro inexistente! Tente novamente." << endl << endl;
 			setcolor(7, 0);
 		}
 	} while (readfile.fail());

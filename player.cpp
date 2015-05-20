@@ -5,22 +5,27 @@
 Player::Player(string boardFilename, string playerName) : board(Board(boardFilename))
 {
     name = playerName;
-	board.setBoard(); // FALTA TESTAR
+	board.setBoard(); //Coloca os navios inicialmente no tabuleiro
 }
 
 string Player::getPlayerName() const
-{
+{	
 	return name;
 }
 
 void Player::showBoard() const
 {
-	board.display(); //FALTA TESTAR
+	board.display();
 }
-/*
-Bomb Player::getBomb() const
+
+void Player::boardDebug() const
 {
-	string coord, x, y;
+	board.show();
+}
+
+/*Bomb Player::getBomb() const
+{
+	/*string coord, x, y;
 	Position<char> pos;
 	bool temp;
 
@@ -34,11 +39,11 @@ Bomb Player::getBomb() const
 	Bomb bomba(pos);
 		
 	return bomba;
-}
-*/
+}*/
 
 
-bool Player::validcoord(string &pos)
+
+bool Player::validcoord(string &pos) // FALTA TESTAR
 {
 	int nl = board.getLines();
 	int nc = board.getColumns();
@@ -60,7 +65,7 @@ bool Player::validcoord(string &pos)
 }
 
 
-void Player::attackBoard(const Bomb &b)
+void Player::attackBoard(const Bomb &b) // FALTA TESTAR
 {
 	board.attack(b);
 }

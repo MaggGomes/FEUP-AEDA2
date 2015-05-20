@@ -41,60 +41,60 @@ int Board::getColumns() const
 	return numColumns; // Devolve número de colunas do tabuleiro
 }
 
-bool Board::putShip(const Ship &s, vector<vector<int>> &b, const int &i)
+bool Board::putShip(const Ship &s, vector<vector<int>> &b, const int &i) // FALTA TESTAR SE DETETA CASO OS NAVIOS FIQUEM UNS EM CIMA DOS OUTROS
 {
-	int x = (int)s.getPosition().lin - 65;
-	int y = (int)s.getPosition().col - 97;
+	
+	int y = s.getPosition().col;
 
 	if (s.getOrientation() == 'H')
 	{
-		if ((x > numLines) || (y + s.getSize() - 1 > numColumns))
+		if ((s.getPosition().lin > numLines) || (s.getPosition().col + s.getSize() - 1 > numColumns))
 			return false;
 		else
 		{
 			for (size_t j = 0; j < s.getSize(); j++)
 			{
-				if (b[x][y + j] != -1)
+				if (b.at(s.getPosition().lin).at(s.getPosition().col + j) != -1)
 					return false;
 			}
 		}
 		for (size_t k = 0; k < s.getSize(); k++)
 		{
-			b[x][y + k] = i;
+			b.at(s.getPosition().lin).at(s.getPosition().col + k) = i;
 		}
 		return true;
 	}
 	else if (s.getOrientation() == 'V')
 	{
-		if ((x + s.getSize() - 1 > numLines) || (y > numColumns))
+		if ((s.getPosition().lin + s.getSize() - 1 > numLines) || (s.getPosition().col > numColumns))
 			return false;
 		else
 		{
 			for (size_t j = 0; j < s.getSize(); j++)
 			{
-				if (b[x + j][y] != -1)
+				if (b.at(s.getPosition().lin + j).at(s.getPosition().col) != -1)
 					return false;
 			}
 		}
 
 		for (size_t k = 0; k < s.getSize(); k++)
 		{
-			b[x + k][y] = i;
+			b.at(s.getPosition().lin + k).at(s.getPosition().col) = i;
 		}
 		return true;
 	}
 	return true;
 }
 
-void Board::setBoard() // FALTA COMPLETAR
-{
+void Board::setBoard()
+{	
 	for (size_t i = 0; i < ships.size(); i++)
 	{
 		putShip(ships.at(i), board, i);
 	}
 }
 
-void Board::moveShips()
+void Board::moveShips() // FALTA TESTAR
 {
 	vector<Ship> shipstemp = ships; // Cria vector ships temporário
 	vector <vector <int>> boardtemp(numLines, vector <int>(numColumns, -1)); // Cria tabuleiro temporário
@@ -124,7 +124,7 @@ bool update_board = false; // Variável que devolve true caso seja possível alt
 
 }*/
 
-bool Board::attack(const Bomb &b) // FALTA COMPLETAR
+bool Board::attack(const Bomb &b) // FALTA TESTAR
 {
 	Position<unsigned int> coordbombanum;
 	coordbombanum.lin = b.getTargetPosition().lin - 65; // Coordenada da linha em formato unsigned int

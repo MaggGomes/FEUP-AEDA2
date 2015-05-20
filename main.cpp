@@ -15,15 +15,21 @@ using namespace std;
 int main()
 {
 	impressaoTitulo(); // Imprime título do jogo
-	cout << "CRIAR JOGADOR 1" << endl << endl;
+	setcolor(11, 0);
+	cout << "<<CRIAR JOGADOR 1>>" << endl << endl;
+	setcolor(7, 0);
 	Player playerone(getFilename(), getPlayername()); // Inicializa classe Player do jogador 1
 
 	clrscr(); // Limpa ecrâ;
 	impressaoTitulo();
-	cout << "CRIAR JOGADOR 2" << endl << endl;
+	setcolor(11, 0);
+	cout << "<<CRIAR JOGADOR 2>>" << endl << endl;
+	setcolor(7, 0);
 	Player playertwo(getFilename(), getPlayername()); // Inicializa classe Player do jogador 1
-
+	
+	
 	playerone.showBoard(); // TESTE
+	playerone.boardDebug(); // TESTE
 
 	
 
