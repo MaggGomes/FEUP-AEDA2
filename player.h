@@ -14,6 +14,7 @@ public:
 	Player(string boardFilename, string playerName);
 	string getPlayerName() const; // Mostra nome do jogador (para debugging)
 	void showBoard() const;       // Mostra o tabuleiro do jogador
+	bool validcoord(string &pos)
 	Bomb getBomb() const;         // Pergunta pelas coordenadas da bomba e coloca bomba
 	void attackBoard(const Bomb &b); // "Recebe" a bomba do adversário
 	// Atualiza o tabuleiro tabuleiro tendo em conta o dano da bomba e se o navio se move

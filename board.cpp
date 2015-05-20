@@ -86,11 +86,11 @@ bool Board::putShip(const Ship &s, vector<vector<int>> &b, const int &i)
 	return true;
 }
 
-void Board::setBoard()
+void Board::setBoard() // FALTA COMPLETAR
 {
 	for (size_t i = 0; i < ships.size(); i++)
 	{
-		putShip(ships[i], board, i);
+		putShip(ships.at(i), board, i);
 	}
 }
 
