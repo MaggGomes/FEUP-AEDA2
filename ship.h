@@ -6,13 +6,13 @@
 class Ship
 {
 public:
-	Ship(char symbol, PositionChar position, char orientation, unsigned int size, unsigned int color);
+	Ship(char symbol, Position<char> position, char orientation, unsigned int size, unsigned int color);
 	char getOrientation() const; // Devolve valor da orientação do navio
 	bool move(char direction, bool rotate, unsigned int lineMin, unsigned int columnMin, unsigned int lineMax, unsigned int columnMax); // Move o navio (para debugging)
 	bool moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int lineMax, unsigned int columnMax); // Move o navio aleatoriamente
 	bool attack(size_t partNumber); // partNumber = {0,1,…, tamanho-1}
 	bool isDestroyed() const;       // Verifica se o navio está destruído
-	PositionInt getPosition() const;   // Devolve tamanho do navio
+	Position<unsigned int> getPosition() const;   // Devolve tamanho do navio
 	char getSymbol() const; // Devolve símbolo do navio
 	unsigned int getSize() const; // Devolve tamanho do navio
 	unsigned int getColor() const; // Devolve cor do navio
@@ -20,7 +20,7 @@ public:
 
 private:
 	char symbol; // 'P' = "porta-aviões"; 'F' = "fragata"; … 
-	PositionInt position; // Coordenadas do canto superior esquerdo do navio
+	Position<unsigned int> position; // Coordenadas do canto superior esquerdo do navio
 	char orientation; // 'H' = horizontal; 'V' = vertical
 	unsigned int size; // Número de células ocupadas pelo navio
 	unsigned int color; // Código das cores

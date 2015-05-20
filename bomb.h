@@ -6,8 +6,8 @@
 class Bomb
 {
 public:
-	Bomb(PositionChar targetPosition); // Contrutor da classe Bomb
-	PositionChar getTargetPosition() const; // Devolve valores das coordenadas do objeto da class Bomb em letras
+	Bomb(Position<char> targetPosition); // Contrutor da classe Bomb
+	Position<char> getTargetPosition() const; // Devolve valores das coordenadas do objeto da class Bomb em letras
 	void show() const; // Mostra os atributos da bomba (para debugging)
 
 private:

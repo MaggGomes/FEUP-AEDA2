@@ -12,7 +12,7 @@ Board::Board(const string &filename)
 
 	// Valores para guardar no vector ships
 	char symbol, orientation;
-	PositionChar positionchar;
+	Position<char> positionchar;
 	unsigned int color, size;
 
 	readfile >> numLines >> operatorX >> numColumns; // Lê a primeira linha de código que tem as dimensões do tabuleiro
@@ -86,6 +86,14 @@ bool Board::putShip(const Ship &s, vector<vector<int>> &b, const int &i)
 	return true;
 }
 
+void Board::setBoard()
+{
+	for (size_t i = 0; i < ships.size(); i++)
+	{
+		putShip(ships[i], board, i);
+	}
+}
+
 void Board::moveShips()
 {
 	vector<Ship> shipstemp = ships; // Cria vector ships temporário
@@ -118,7 +126,7 @@ bool update_board = false; // Variável que devolve true caso seja possível alt
 
 bool Board::attack(const Bomb &b) // FALTA COMPLETAR
 {
-	PositionInt coordbombanum;
+	Position<unsigned int> coordbombanum;
 	coordbombanum.lin = b.getTargetPosition().lin - 65; // Coordenada da linha em formato unsigned int
 	coordbombanum.col = b.getTargetPosition().col - 97; // Coordenada da coluna em formato unsigned int
 	size_t indexShip; // Índice do navio no vector ships
@@ -228,3 +236,10 @@ void Board::show() const
 		cout << endl;
 	}
 }
+
+/*
+ostream& operator<<(ostream& os, const Board& tab)
+{
+	os << "lin: " << pos.lib << " col; " << pos.col << endl;
+}
+*/

@@ -5,7 +5,7 @@
 #include "functions.h"
 #include "structs.h"
 
-Ship::Ship(char symbol, PositionChar position, char orientation, unsigned int size, unsigned int color)
+Ship::Ship(char symbol, Position<char> position, char orientation, unsigned int size, unsigned int color)
 {
 	string statustemp(size, symbol); // cria string com comprimento igual ao navio e formada pelo símbolo do mesmo
 
@@ -266,7 +266,7 @@ bool Ship::isDestroyed() const
 	return destroyed;
 }
 
-PositionInt Ship::getPosition() const
+Position<unsigned int> Ship::getPosition() const
 {
 	return position;
 }

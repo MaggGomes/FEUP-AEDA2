@@ -28,7 +28,7 @@ int main()
 	
 
 	/*char symbol = 'F';
-	PositionChar position;
+	Position<char> position;
 	position.lin = 'A';
 	position.col = 'a';
 	char orientation = 'H';
@@ -42,8 +42,6 @@ int main()
 	navio.moveRand(0, 0, 5, 5);
 	navio.show();
 	cout << endl;*/
-
-
 
 	return 0;
 }

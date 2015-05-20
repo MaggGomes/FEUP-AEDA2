@@ -5,7 +5,7 @@
 #include "board.h"
 #include "functions.h"
 
-Bomb::Bomb(PositionChar targetPosition) // Constrói objeto da classe Bomb; 
+Bomb::Bomb(Position<char> targetPosition) // Constrói objeto da classe Bomb; 
 {
 	// Guarda os valores das coordenadas da bomba
 	targetLine = targetPosition.lin;
@@ -33,9 +33,9 @@ Bomb::Bomb(PositionChar targetPosition) // Constrói objeto da classe Bomb;
 	}
 }
 
-PositionChar Bomb::getTargetPosition() const
+Position<char> Bomb::getTargetPosition() const
 {
-	PositionChar targetposition; // Struct que a funçao vai devolver 
+	Position<char> targetposition; // Struct que a funçao vai devolver 
 
 	targetposition.lin = targetLine;
 	targetposition.col = targetColumn;
