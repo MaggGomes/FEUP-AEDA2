@@ -29,7 +29,8 @@ int main()
 	
 	
 	playerone.showBoard(); // TESTE
-	playerone.boardDebug(); // TESTE
+	//playerone.boardDebug(); // TESTE
+	playerone.getBomb(); // TESTE
 
 	
 
