@@ -1,0 +1,6 @@
+TO DO:
+-overloading
+-move ships
+-MAISCULAS/minusculas
+-testar attackBomb
+-score
