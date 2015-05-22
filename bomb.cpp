@@ -10,10 +10,10 @@ Bomb::Bomb(Position<char> targetPosition) // Constrói objeto da classe Bomb;
 	// Guarda os valores das coordenadas da bomba
 	targetLine = targetPosition.lin;
 	targetColumn = targetPosition.col;
-
+	
 	/* Modifica coordenadas da bomba em caso de ela se "desviar" do alvo de modo aleatório;
 	   A bomba poderá no final ficar com coordenadas fora dos limites do tabuleiro, pelo que poderá atirada para fora do tabuleiro */
-
+	
 	switch (randomPosition()) // Função randomPosition() altera coordenadas da bomba aleatoriamente
 	{
 	case '0': // Mantém coordenadas originais

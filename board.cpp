@@ -1,5 +1,8 @@
 #include <iostream>
 #include <iomanip>
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 
 #include "board.h"
 #include "ship.h"
@@ -27,8 +30,8 @@ Board::Board(const string &filename)
 
 	readfile.close();
 
-	vector <vector <int>> boardtemp(numLines, vector <int>(numColumns, -1)); // Cria tabuleiro temporário a partir do ficheiro de configurações, onde -1 representa o mar
-	board = boardtemp; // Atribui valores ao parâmetro board da class Board
+	vector <vector <int>> boardTemp(numLines, vector <int>(numColumns, -1)); // Cria tabuleiro temporário a partir do ficheiro de configurações, onde -1 representa o mar
+	board = boardTemp; // Atribui valores ao parâmetro board da class Board
 }
 
 int Board::getLines() const
@@ -43,40 +46,32 @@ int Board::getColumns() const
 
 bool Board::putShip(const Ship &s, vector<vector<int>> &b, const int &i) // FALTA TESTAR SE DETETA CASO OS NAVIOS FIQUEM UNS EM CIMA DOS OUTROS
 {
-	
-	int y = s.getPosition().col;
+// Verifica se o navio a colocar fica sobre outro navio
 
 	if (s.getOrientation() == 'H')
 	{
-		if ((s.getPosition().lin > numLines) || (s.getPosition().col + s.getSize() - 1 > numColumns))
-			return false;
-		else
+		for (size_t j = 0; j < s.getSize(); j++)
 		{
-			for (size_t j = 0; j < s.getSize(); j++)
-			{
-				if (b.at(s.getPosition().lin).at(s.getPosition().col + j) != -1)
-					return false;
-			}
+			if (b.at(s.getPosition().lin).at(s.getPosition().col + j) != -1)
+				return false;
 		}
+
 		for (size_t k = 0; k < s.getSize(); k++)
 		{
 			b.at(s.getPosition().lin).at(s.getPosition().col + k) = i;
 		}
 		return true;
 	}
+
 	else if (s.getOrientation() == 'V')
 	{
-		if ((s.getPosition().lin + s.getSize() - 1 > numLines) || (s.getPosition().col > numColumns))
-			return false;
-		else
-		{
-			for (size_t j = 0; j < s.getSize(); j++)
-			{
-				if (b.at(s.getPosition().lin + j).at(s.getPosition().col) != -1)
-					return false;
-			}
-		}
 
+		for (size_t j = 0; j < s.getSize(); j++)
+		{
+			if (b.at(s.getPosition().lin + j).at(s.getPosition().col) != -1)
+				return false;
+		}
+		
 		for (size_t k = 0; k < s.getSize(); k++)
 		{
 			b.at(s.getPosition().lin + k).at(s.getPosition().col) = i;
@@ -87,7 +82,7 @@ bool Board::putShip(const Ship &s, vector<vector<int>> &b, const int &i) // FALT
 }
 
 void Board::setBoard()
-{	
+{
 	for (size_t i = 0; i < ships.size(); i++)
 	{
 		putShip(ships.at(i), board, i);
@@ -96,88 +91,83 @@ void Board::setBoard()
 
 void Board::moveShips() // FALTA TESTAR
 {
-	vector<Ship> shipstemp = ships; // Cria vector ships temporário
-	vector <vector <int>> boardtemp(numLines, vector <int>(numColumns, -1)); // Cria tabuleiro temporário
+	srand(time(NULL)); // Permite gerar números aleatórios
+	vector<Ship> shipsTemp = ships; // Cria vector ships temporário
+	vector <vector <int>> boardTemp(numLines, vector <int>(numColumns, -1)); // Cria tabuleiro temporário
 	bool validade = true;
-
-	for (size_t i = 0; i < shipstemp.size(); i++)
-		shipstemp[i].moveRand(0, 0, numLines, numColumns);
-
-	for (size_t i = 0; i < shipstemp.size(); i++)
-	{
-		putShip(shipstemp[i], boardtemp, i);
-		if (putShip(shipstemp[i], boardtemp, i) != true)
+	
+	for (size_t i = 0; i < shipsTemp.size(); i++) // Altera posição/orientação dos navios de forma aleatória
+		shipsTemp.at(i).moveRand(0, 0, numLines, numColumns);
+	
+	for (size_t i = 0; i < shipsTemp.size(); i++)
+	{		
+		if (!putShip(shipsTemp.at(i), boardTemp, i)) // Verifica se é possível colocar os navios
 		{
 			validade = false;
 			break;
 		}
 	}
 
-	if (validade)
-		ships = shipstemp;
+	if (validade) // Se tiver sido possível colocar os barcos no tabuleiro após a sua alteraão de posição,
+	{			  // então são alterados os vectores ships e board
+		ships = shipsTemp;
+		board = boardTemp;
+	}
 }
 
-// APAGAR SE NAO HOUVER ERROS AO CORRER O MOVESHIPS
-/*bool Board::checkBoard()
+
+bool Board::attack(const Bomb &b)
 {
-bool update_board = false; // Variável que devolve true caso seja possível alterar a posição dos navios dentro do tabuleiro
+	Position <unsigned int> coordBomba;
+	coordBomba.lin = b.getTargetPosition().lin - 65; // Coordenada da linha em formato unsigned int
+	coordBomba.col = b.getTargetPosition().col - 97; // Coordenada da coluna em formato unsigned int
+	size_t partNumber = 0; // Inicialização do índice da célula do navio que é atacada
 
-}*/
-
-bool Board::attack(const Bomb &b) // FALTA TESTAR
-{
-	Position<unsigned int> coordbombanum;
-	coordbombanum.lin = b.getTargetPosition().lin - 65; // Coordenada da linha em formato unsigned int
-	coordbombanum.col = b.getTargetPosition().col - 97; // Coordenada da coluna em formato unsigned int
-	size_t indexShip; // Índice do navio no vector ships
-	size_t partNumber; // Índice da célula do navio que é atacada
-
-	if (board.at(coordbombanum.lin).at(coordbombanum.col) == -1) // Verifica se a bomba é lançada ao mar
+	if (board.at(coordBomba.lin).at(coordBomba.col) == -1) // Verifica se a bomba é lançada ao mar
 	{
 		return false;
 	}
 
-	else if (coordbombanum.lin < 0 || coordbombanum.col < 0 || coordbombanum.lin >= numLines || coordbombanum.col >= numColumns) // Verifica se a bomba é lançada para fora do tabuleiro
+	else if (coordBomba.lin < 0 || coordBomba.col < 0 || coordBomba.lin >= numLines || coordBomba.col >= numColumns) // Verifica se a bomba é lançada para fora do tabuleiro
 	{
 		return false;
 	}
-	else
+
+	else // Acertou um navio
 	{
-		indexShip = board.at(coordbombanum.lin).at(coordbombanum.col); // Inicializa valor do índice do navio no vector ships
-
-		if (ships.at(board.at(coordbombanum.lin).at(coordbombanum.col)).getOrientation() == 'H')
+		if (ships.at(board.at(coordBomba.lin).at(coordBomba.col)).getOrientation() == 'H')
 		{
-			do
-			{
-				int i = 0;
-				partNumber = i;
-				coordbombanum.col = coordbombanum.col - i;
-				i++;
-			} while ((board.at(coordbombanum.lin).at(coordbombanum.col) != -1) && (coordbombanum.col >= 0));
+			Position <unsigned int> position = ships.at(board.at(coordBomba.lin).at(coordBomba.col)).getPosition();
+			int coordCol = coordBomba.col;
 
+			while (coordCol > position.col)
+			{
+				partNumber++;
+				coordCol = coordCol - 1;
+			}
 		}
 
-		else if (ships.at(board.at(coordbombanum.lin).at(coordbombanum.col)).getOrientation() == 'V')
+		if (ships.at(board.at(coordBomba.lin).at(coordBomba.col)).getOrientation() == 'H')
 		{
-			do
-			{
-				int i = 0;
-				partNumber = i;
-				coordbombanum.lin = coordbombanum.lin - i;
-				i++;
-			} while ((board.at(coordbombanum.lin).at(coordbombanum.col) != -1) && (coordbombanum.lin >= 0));
+			Position <unsigned int> position = ships.at(board.at(coordBomba.lin).at(coordBomba.col)).getPosition();
+			int coordLin = coordBomba.lin;
 
+			while (coordLin > position.lin)
+			{
+				partNumber++;
+				coordLin = coordLin - 1;
+			}
 		}
 
-		ships.at(indexShip).attack(partNumber); // Faz o "ataque" ao navio
+		ships.at(board.at(coordBomba.lin).at(coordBomba.col)).attack(partNumber); // Faz o "ataque" ao navio
 
 		return true;
 	}
 }
 
-void Board::display() const // FALTA COMPLETAR - falta alterar de maiúscula para minúscula na impressão do navio nas células que tenham sido atingidas por alguma bomba
+void Board::display() const
 {
-	clrscr(); // Limpa ecrâ
+	clrscr(); // Limpa a consola
 
 	for (size_t i = 0; i < board.size(); i++) // Imprime coordenadas das colunas da primeira linha do tabuleiro
 	{
@@ -198,21 +188,56 @@ void Board::display() const // FALTA COMPLETAR - falta alterar de maiúscula par
 		for (size_t j = 0; j < numColumns; j++)
 		{
 			gotoxy(j * 2 + 1, i + 1);
+			setcolor(9, 7);
+			cout << '.' << " "; // Impressão caso seja "mar" (-1)
+		}
+	}
+
+	for (size_t i = 0; i < numLines; i++) // Impressão do tabuleiro
+	{
+		for (size_t j = 0; j < numColumns; j++)
+		{
+			gotoxy(j * 2 + 1, i + 1);
 			if (board.at(i).at(j) == -1)
 			{
 				setcolor(9, 7);
 				cout << '.' << " "; // Impressão caso seja "mar" (-1)
 			}
 
-			else
+			else if (ships.at(board.at(i).at(j)).getOrientation() == 'H')
 			{
+				Position <unsigned int> position = ships.at(board.at(i).at(j)).getPosition();
+				int coordCol = j;
+				size_t partNumber = 0; // Índice da célula do barco "inicial"
+
+				while (coordCol > position.col)
+				{
+					partNumber++;
+					coordCol = coordCol - 1;
+				}
+
 				setcolor(ships.at(board.at(i).at(j)).getColor(), 7);
-				cout << ships.at(board.at(i).at(j)).getSymbol() << " ";
+				cout << ships.at(board.at(i).at(j)).getStatus()[partNumber] << " ";
+			}
+
+			else if (ships.at(board.at(i).at(j)).getOrientation() == 'V')
+			{
+				Position <unsigned int> position = ships.at(board.at(i).at(j)).getPosition();
+				int coordLin = i;
+				size_t partNumber = 0; // Índice da célula do barco "inicial"
+
+				while (coordLin > position.lin)
+				{
+					partNumber++;
+					coordLin = coordLin - 1;
+				}
+
+				setcolor(ships.at(board.at(i).at(j)).getColor(), 7);
+				cout << ships.at(board.at(i).at(j)).getStatus()[partNumber] << " ";
 			}
 		}
 	}
 	cout << endl << endl;
-
 	setcolor(7, 0);
 }
 
@@ -237,9 +262,8 @@ void Board::show() const
 	}
 }
 
-/*
 ostream& operator<<(ostream& os, const Board& tab)
 {
-	os << "lin: " << pos.lib << " col; " << pos.col << endl;
+	tab.display();
+	return os;
 }
-*/

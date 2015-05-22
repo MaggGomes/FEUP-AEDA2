@@ -3,8 +3,6 @@
 
 #include <iostream>
 
-
-
 #include "bomb.h"
 #include "board.h"
 
@@ -19,7 +17,9 @@ public:
 	Bomb getBomb() const;         // Pergunta pelas coordenadas da bomba e coloca bomba
 	void attackBoard(const Bomb &b); // "Recebe" a bomba do adversário
 	// Atualiza o tabuleiro tabuleiro tendo em conta o dano da bomba e se o navio se move
-	
+	void move(); // APAGAR - VERSAO PARA TESTAR MOVESHIPS
+	Board getBoard() const; // devolve o tabuleiro
+
 private:
 	string name; // Nome do jogador
 	Board board; // Tabuleiro do jogador

@@ -14,6 +14,7 @@ public:
 	bool isDestroyed() const;       // Verifica se o navio está destruído
 	Position<unsigned int> getPosition() const;   // Devolve tamanho do navio
 	char getSymbol() const; // Devolve símbolo do navio
+	string getStatus() const; // Devolve status do navio
 	unsigned int getSize() const; // Devolve tamanho do navio
 	unsigned int getColor() const; // Devolve cor do navio
 	void show() const;              // Mostra os atributos do navio (para debugging)

@@ -26,11 +26,11 @@ char Ship::getOrientation() const
 bool Ship::move(char direction, bool rotate, unsigned int lineMin, unsigned int columnMin, unsigned int lineMax, unsigned int columnMax)
 {
 	bool moveShip = false; // booleano que a função devolve que indica se o navio se move ou não
-		
+
 	/* A função move verifica primeiro se é possível mover o navio uma casa numa direção aleatória.
 	Se após esta alteração o navio permanecer totalmente dentro do tabuleiro a função move devolve true e altera pelo menos a posição inicial em uma casa.
 	Por fim é testado se também se pode rodar o navio. Caso este permaneça ,na sua totalidade, dentro do tabuleiro depois de rodar, a sua orientação é alterada juntamente com a posição. */
-	
+
 	if (orientation == 'H') // alteração posição do navio
 	{
 		switch (direction)
@@ -129,7 +129,7 @@ bool Ship::move(char direction, bool rotate, unsigned int lineMin, unsigned int 
 	return moveShip;
 }
 
-bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int lineMax, unsigned int columnMax)
+bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int lineMax, unsigned int columnMax) // FALTA CORRIGIR
 {
 	bool moveShip = false; // booleano que a função devolve que indica se o navio se move ou não
 
@@ -141,8 +141,6 @@ bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int l
 	{
 		switch (randomPosition())
 		{
-		case '0': // Não move
-			break;
 		case 'N': // Move para norte
 			if (position.lin > lineMin)
 			{
@@ -171,6 +169,8 @@ bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int l
 				moveShip = true;
 			}
 			break;
+		default: // Não move (case '0')
+			break;
 		}
 	}
 
@@ -178,8 +178,6 @@ bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int l
 	{
 		switch (randomPosition())
 		{
-		case '0': // Não move
-			break;
 		case 'N': // Move para norte
 			if (position.lin > columnMin)
 			{
@@ -207,6 +205,8 @@ bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int l
 				position.col = position.col - 1;
 				moveShip = true;
 			}
+			break;
+		default: // Não move (case '0')
 			break;
 		}
 	}
@@ -274,6 +274,11 @@ Position<unsigned int> Ship::getPosition() const
 char Ship::getSymbol() const
 {
 	return symbol;
+}
+
+string Ship::getStatus() const
+{
+	return status;
 }
 
 unsigned int Ship::getSize() const

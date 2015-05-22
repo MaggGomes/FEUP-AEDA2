@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
 #include "player.h"
 #include "bomb.h"
 #include "board.h"
@@ -16,7 +20,7 @@ string Player::getPlayerName() const
 
 void Player::showBoard() const
 {
-	board.display();
+	cout << board;
 }
 
 void Player::boardDebug() const
@@ -31,16 +35,21 @@ bool Player::validCoord(string &coordenada) const
 	int x, y;
 	bool validade = false;
 
-	if (coordenada.length() == 2)
+	if (coordenada.length() == 2) // Verfica se o input tem o comprimento correto (2 letras para as coordenadas)
 	{
 		x = (int)coordenada.at(0) - 65;
 		y = (int)coordenada.at(1) - 97;
 
-		if ((0 <= x) && (x < nl) && (0 <= y) && (y < nc))
+		if ((0 <= x) && (x < nl) && (0 <= y) && (y < nc)) // Verfica se as letras do input são coordenadas possíveis do tabuleiro
 			validade = true;
 	}
-
 	return validade;
+}
+
+void Player::move() // APAGAR - VERSAO PARA TESTAR MOVESHIPS
+{
+	srand(time(NULL));
+	board.moveShips();
 }
 
 Bomb Player::getBomb() const
@@ -78,5 +87,22 @@ Bomb Player::getBomb() const
 
 void Player::attackBoard(const Bomb &b) // FALTA TESTAR
 {
-	board.attack(b);
+	if (board.attack(b))
+	{
+		setcolor(2, 0);
+		cout << ":: RESULTADO: Bom tiro! Acertou no navio!" << endl << endl;
+		setcolor(7, 0);
+	}
+
+	else
+	{
+		setcolor(4, 0);
+		cout << ":: RESULTADO: Falhou o alvo." << endl << endl;
+		setcolor(7, 0);
+	}
+}
+
+Board Player::getBoard() const
+{
+	return board;
 }

@@ -1,13 +1,6 @@
-﻿Build started 20/05/2015 20:04:07.
+﻿Build started 22/05/2015 03:17:29.
      1>Project "C:\Users\Manuel Gomes\Documents\GitHub\Trabalho_2\Trabalho2.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /FR"Debug\\" /Gd /TP /analyze- /errorReport:prompt board.cpp
-         board.cpp
-     1>c:\users\manuel gomes\documents\github\trabalho_2\board.cpp(51): warning C4018: '>' : signed/unsigned mismatch
-     1>c:\users\manuel gomes\documents\github\trabalho_2\board.cpp(69): warning C4018: '>' : signed/unsigned mismatch
-     1>c:\users\manuel gomes\documents\github\trabalho_2\board.cpp(140): warning C4018: '>=' : signed/unsigned mismatch
-     1>c:\users\manuel gomes\documents\github\trabalho_2\board.cpp(196): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\manuel gomes\documents\github\trabalho_2\board.cpp(198): warning C4018: '<' : signed/unsigned mismatch
          C:\Program Files (x86)\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /FR"Debug\\" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
        Link:
@@ -24,4 +17,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.83
+Time Elapsed 00:00:03.08
