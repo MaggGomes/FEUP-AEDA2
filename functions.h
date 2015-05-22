@@ -19,6 +19,5 @@ bool rotation(); // Roda o navio (true=roda,false=mantém a orientação)
 string getPlayername(); // Pergunta pelo nome do jogador
 string getFilename(); // Pergunta pelo nome do ficheiro de configuração do tabuleiro
 void createMenu(); // FALTA COMPLETAR - MENU ALTERNATIVO
-void sleep(unsigned int mseconds); // Pausa o erâ durante x milisegundos
 
 #endif // FUNCTIONS_H

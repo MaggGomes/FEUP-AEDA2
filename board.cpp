@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <Windows.h>
 
 #include "board.h"
 #include "ship.h"
@@ -43,12 +44,6 @@ int Board::getColumns() const
 {
 	return numColumns; // Devolve número de colunas do tabuleiro
 }
-
-/*Ship getShips()
-{
-	vector <Ship> ships = ships;
-	return ships;
-}*/
 
 bool Board::putShip(const Ship &s, vector<vector<int>> &b, const int &i)
 {
@@ -133,7 +128,7 @@ void Board::moveShips()
 			setcolor(3, 0);
 			cout << ":: ATENCAO! Os navios inimigos preparam-se para se mover!";
 			setcolor(7, 0);
-			sleep(2000);		
+			Sleep(2000);		
 	}
 }
 
@@ -187,39 +182,50 @@ bool Board::attack(const Bomb &b)
 	}
 }
 
+bool Board::getShipstatus()
+{
+	bool destroyed = true;
+
+	for (size_t i = 0; i < ships.size(); i++)
+	{
+		if (!ships.at(i).isDestroyed()) // Verifica navio a navio se todos estão destruídos
+		{
+			return destroyed = false;
+		}
+	}
+	
+	return destroyed;
+}
+
 void Board::display() const
 {
 	clrscr(); // Limpa a consola
 
 	for (size_t i = 0; i < board.size(); i++) // Imprime coordenadas das colunas da primeira linha do tabuleiro
 	{
-		gotoxy(i * 2 + 1, 0);
+		gotoxy(i * 2 + 3, 0);
 		setcolor(15, 0);
 		cout << coordenadas.at(0).at(i);
 	}
 
 	for (size_t i = 0; i < board.size(); i++) // Imprime coordenadas das linhas da primeira coluna do tabuleiro
 	{
-		gotoxy(0, i + 1);
+		gotoxy(1, i + 1);
 		setcolor(15, 0);
 		cout << coordenadas.at(1).at(i);
 	}
-
-	for (size_t i = 0; i < numLines; i++) // Impressão do tabuleiro
+	for (size_t i = 0; i < board.size(); i++) // Imprime segunda coluna vazia
 	{
-		for (size_t j = 0; j < numColumns; j++)
-		{
-			gotoxy(j * 2 + 1, i + 1);
-			setcolor(9, 7);
-			cout << '.' << " "; // Impressão caso seja "mar" (-1)
-		}
+		gotoxy(2, i + 1);
+		setcolor(0, 7);
+		cout << " ";
 	}
 
 	for (size_t i = 0; i < numLines; i++) // Impressão do tabuleiro
 	{
 		for (size_t j = 0; j < numColumns; j++)
 		{
-			gotoxy(j * 2 + 1, i + 1);
+			gotoxy(j * 2 + 3, i + 1);
 			if (board.at(i).at(j) == -1)
 			{
 				setcolor(9, 7);

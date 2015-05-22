@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <Windows.h>
 
 #include "player.h"
 #include "bomb.h"
@@ -55,6 +56,8 @@ Bomb Player::getBomb() const
 	
 	do
 	{
+		clrscr();
+		cout << board;
 		cout << ">> COORDENADAS A ATACAR (Linha " << coordenadas.at(1).at(0) << ".." << coordenadas.at(1).at(board.getLines() - 1) << ") (Coluna " << coordenadas.at(0).at(0) << ".." << coordenadas.at(0).at(board.getColumns() - 1) << ") : ";
 		cin >> coord;
 
@@ -63,7 +66,7 @@ Bomb Player::getBomb() const
 			setcolor(2, 0);
 			cout << ":: Coordenadas inseridas com sucesso!" << endl << endl;
 			setcolor(7, 0);
-			sleep(1000);
+			Sleep(1200);
 		}
 		
 		else
@@ -71,6 +74,7 @@ Bomb Player::getBomb() const
 			setcolor(4, 0);
 			cout << ":: ERRO: Coordenadas invalidas! Reintroduza coordenadas." << endl << endl;
 			setcolor(7, 0);
+			Sleep(1400);
 		}
 	} while (!validCoord(coord));
 	
@@ -92,7 +96,7 @@ void Player::attackBoard(const Bomb &b)
 		setcolor(2, 0);
 		cout << ":: RESULTADO: Bom tiro! Acertou no navio!" << endl << endl;
 		setcolor(7, 0);
-		sleep(1000);
+		Sleep(1000);
 	}
 
 	else
@@ -100,7 +104,7 @@ void Player::attackBoard(const Bomb &b)
 		setcolor(4, 0);
 		cout << ":: RESULTADO: Falhou o alvo." << endl << endl;
 		setcolor(7, 0);
-		sleep(1000);
+		Sleep(1000);
 	}
 
 	cout << board;
@@ -109,4 +113,12 @@ void Player::attackBoard(const Bomb &b)
 Board Player::getBoard() const
 {
 	return board;
+}
+
+bool Player::fleetDestroyed()
+{
+	if (board.getShipstatus())
+		return true;
+	else
+		return false;
 }

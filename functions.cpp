@@ -114,10 +114,10 @@ string getPlayername()
 
 	do
 	{
-		cout << ">> NICKNAME JOGADOR (entre 3 e 8 caracteres): ";
+		cout << ">> NICKNAME JOGADOR (entre 3 e 6 caracteres): ";
 		getline(cin, playerName);
 
-		if (cin.fail() || playerName.length() < 3 || playerName.length() > 8)
+		if (cin.fail() || playerName.length() < 3 || playerName.length() > 6)
 		{
 			setcolor(4, 0);
 			cout << ":: ERRO: Nickname invalido! Tente novamente." << endl << endl;
@@ -130,7 +130,7 @@ string getPlayername()
 			cout << ":: Nickname guardado com sucesso!" << endl << endl;
 			setcolor(7, 0);
 		}
-	} while (cin.fail() || playerName.length() < 3 || playerName.length() > 8);
+	} while (cin.fail() || playerName.length() < 3 || playerName.length() > 6);
 
 	return playerName;
 }
@@ -151,7 +151,7 @@ string getFilename()
 			setcolor(2, 0);
 			cout << ":: Ficheiro aberto com sucesso!" << endl << endl;
 			setcolor(7, 0);
-			sleep(500);
+			Sleep(400);
 		}
 		else
 		{
@@ -166,19 +166,13 @@ string getFilename()
 	return filename;
 }
 
-void sleep(unsigned int mseconds)
+void createMenu() // FALTA COMPLETAR
 {
-	clock_t goal = mseconds + clock(); // Pausa o ecrâ durante x milisegundos
-	while (goal > clock());
-}
-
-void createMenu()
-{
-	string Menu[3] = { "<<   INICIAR JOGO    >>", "<<    TOP SCORES     >>", "<<   SAIR DO JOGO    >>" };
-
+	string Menu[3] = { "<<    INICIAR JOGO   >>", "<<     TOP SCORES    >>", "<<    SAIR DO JOGO   >>" };
+	bool validade = true;
 	int pointer = 0;
-	
-	while (true)
+
+	while (validade)
 	{
 		clrscr();
 		impressaoTitulo();
@@ -188,9 +182,10 @@ void createMenu()
 		for (int i = 0; i < 3; ++i)
 		{
 			if (i == pointer)
-			{
-				setcolor(11, 0);
-				cout << setw(51) << Menu[i] << endl << endl;
+			{				
+				cout << "                            ";
+				setcolor(3, 1);
+				cout << Menu[i] << endl << endl;
 			}
 			else
 			{
@@ -198,11 +193,13 @@ void createMenu()
 				cout << setw(51) << Menu[i] << endl << endl;
 			}
 		}
+		setcolor(7, 0);
 
-		while (true)
+		while (validade)
 		{
 			if (GetAsyncKeyState(VK_UP) != 0)
 			{
+				Beep(250, 160);
 				pointer -= 1;
 				if (pointer == -1)
 				{
@@ -212,6 +209,7 @@ void createMenu()
 			}
 			else if (GetAsyncKeyState(VK_DOWN) != 0)
 			{
+				Beep(250, 160);
 				pointer += 1;
 				if (pointer == 3)
 				{
@@ -222,23 +220,30 @@ void createMenu()
 			else if (GetAsyncKeyState(VK_RETURN) != 0)
 			{
 				setcolor(7, 0);
+				Beep(200, 160);
 
 				switch (pointer)
 				{
 				case 0:
+					validade = false;
+					cin.ignore(5000, '\n');
 					break;
 				case 1:
 				{
-					string showscore = "show"; // FALTA COMPLETAR - COLOCAR FUNÇÃO QUE MOSTRE SCORES
-					sleep(1000);
+					cout << "\n\n\nThis is the options..."; // FALTA CORRIGIR - MOSTRAR SCORES
+					Sleep(1000);
 				} break;
 				case 2:
-					exit(0); // Sai do jogo
-				}
+					exit(0);
+				}	
 			}
 		}
-		cin.ignore(5000, '\n');
-		clrscr();
-		break;
 	}
 }
+
+/*void print_boards(Player &one, Player &two)
+{
+	UM.showBoard();	DOIS.showBoard();
+	UM.getBoard().show();
+	DOIS.getBoard().show();
+}*/
