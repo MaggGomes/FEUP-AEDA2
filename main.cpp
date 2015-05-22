@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <iomanip>
+#include <Windows.h>
 
 #include "variables.h"
 #include "structs.h"
@@ -56,10 +57,17 @@ int main()
 	}
 
 	if (playerone.fleetDestroyed())
+	{
 		cout << ":: PARABENS! O jogador " << playertwo.getPlayerName() << " venceu!" << endl;
+		Sleep(2000);
+	}
+
 
 	else if (playertwo.fleetDestroyed())
+	{
 		cout << ":: PARABENS! O jogador " << playerone.getPlayerName() << " venceu!" << endl;
+		Sleep(2000);
+	}
 
 	
 	return 0;
