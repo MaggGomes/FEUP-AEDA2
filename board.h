@@ -16,6 +16,7 @@ public:
 	Board(const string &filename);   // Carrega o tabuleiro do ficheiro 'filename'
 	int getLines() const; // Devolve número de linhas do tabuleiro
 	int getColumns() const; // Devolve número de colunas do tabuleiro
+	//Ship getShips();			 // Devolve vector dos navios
 	bool putShip(const Ship &s, vector<vector<int>> &b, const int &i); // Adiciona um navio ao tabuleiro se possível
 	void setBoard(); // Coloca os navios inicialmente no tabuleiro após leitura do ficheiro de configuração
 	void moveShips();                // Tenta mover aleatoriamente todos os navios da frota

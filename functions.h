@@ -18,6 +18,7 @@ char randomPosition(); // (0=“não se move”, 1=‘N’, 2=‘S’, 3=’E’
 bool rotation(); // Roda o navio (true=roda,false=mantém a orientação)
 string getPlayername(); // Pergunta pelo nome do jogador
 string getFilename(); // Pergunta pelo nome do ficheiro de configuração do tabuleiro
-void startMenu(); // Menu inicial do jogo
+void createMenu(); // FALTA COMPLETAR - MENU ALTERNATIVO
+void sleep(unsigned int mseconds); // Pausa o erâ durante x milisegundos
 
 #endif // FUNCTIONS_H

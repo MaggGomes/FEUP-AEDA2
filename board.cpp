@@ -44,7 +44,13 @@ int Board::getColumns() const
 	return numColumns; // Devolve número de colunas do tabuleiro
 }
 
-bool Board::putShip(const Ship &s, vector<vector<int>> &b, const int &i) // FALTA TESTAR SE DETETA CASO OS NAVIOS FIQUEM UNS EM CIMA DOS OUTROS
+/*Ship getShips()
+{
+	vector <Ship> ships = ships;
+	return ships;
+}*/
+
+bool Board::putShip(const Ship &s, vector<vector<int>> &b, const int &i)
 {
 // Verifica se o navio a colocar fica sobre outro navio
 
@@ -52,12 +58,18 @@ bool Board::putShip(const Ship &s, vector<vector<int>> &b, const int &i) // FALT
 	{
 		for (size_t j = 0; j < s.getSize(); j++)
 		{
+			if ((s.getPosition().col + j) >= numColumns)
+				return false;
+
 			if (b.at(s.getPosition().lin).at(s.getPosition().col + j) != -1)
 				return false;
 		}
 
 		for (size_t k = 0; k < s.getSize(); k++)
 		{
+			if ((s.getPosition().col + k) >= numColumns)
+				return false;
+
 			b.at(s.getPosition().lin).at(s.getPosition().col + k) = i;
 		}
 		return true;
@@ -68,12 +80,18 @@ bool Board::putShip(const Ship &s, vector<vector<int>> &b, const int &i) // FALT
 
 		for (size_t j = 0; j < s.getSize(); j++)
 		{
+			if ((s.getPosition().lin + j) >= numLines)
+				return false;
+
 			if (b.at(s.getPosition().lin + j).at(s.getPosition().col) != -1)
 				return false;
 		}
 		
 		for (size_t k = 0; k < s.getSize(); k++)
 		{
+			if ((s.getPosition().lin + k) >= numLines)
+				return false;
+
 			b.at(s.getPosition().lin + k).at(s.getPosition().col) = i;
 		}
 		return true;
@@ -89,7 +107,7 @@ void Board::setBoard()
 	}
 }
 
-void Board::moveShips() // FALTA TESTAR
+void Board::moveShips()
 {
 	srand(time(NULL)); // Permite gerar números aleatórios
 	vector<Ship> shipsTemp = ships; // Cria vector ships temporário
@@ -109,12 +127,15 @@ void Board::moveShips() // FALTA TESTAR
 	}
 
 	if (validade) // Se tiver sido possível colocar os barcos no tabuleiro após a sua alteraão de posição,
-	{			  // então são alterados os vectores ships e board
-		ships = shipsTemp;
-		board = boardTemp;
+	{	 	      // então são alterados os vectores ships e board
+			ships = shipsTemp;
+			board = boardTemp;
+			setcolor(3, 0);
+			cout << ":: ATENCAO! Os navios inimigos preparam-se para se mover!";
+			setcolor(7, 0);
+			sleep(2000);		
 	}
 }
-
 
 bool Board::attack(const Bomb &b)
 {
@@ -123,11 +144,12 @@ bool Board::attack(const Bomb &b)
 	coordBomba.col = b.getTargetPosition().col - 97; // Coordenada da coluna em formato unsigned int
 	size_t partNumber = 0; // Inicialização do índice da célula do navio que é atacada
 
-	if (board.at(coordBomba.lin).at(coordBomba.col) == -1) // Verifica se a bomba é lançada ao mar
-	{
+	if (coordBomba.lin < 0 || coordBomba.lin >= numLines || coordBomba.col < 0 || coordBomba.col >= numColumns) // Verifica se a bomba é lançada para fora dos limites do tabuleiro
 		return false;
-	}
 
+	if (board.at(coordBomba.lin).at(coordBomba.col) == -1) // Verifica se a bomba é lançada ao mar
+		return false;
+	
 	else if (coordBomba.lin < 0 || coordBomba.col < 0 || coordBomba.lin >= numLines || coordBomba.col >= numColumns) // Verifica se a bomba é lançada para fora do tabuleiro
 	{
 		return false;

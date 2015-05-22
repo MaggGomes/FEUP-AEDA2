@@ -1,6 +1,4 @@
 TO DO:
--overloading
--move ships
--MAISCULAS/minusculas
--testar attackBomb
+-overloading (ver se falta aplciar overloading em mais alguma função)
 -score
+-implementar jogo

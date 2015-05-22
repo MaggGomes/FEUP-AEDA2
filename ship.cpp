@@ -129,9 +129,9 @@ bool Ship::move(char direction, bool rotate, unsigned int lineMin, unsigned int 
 	return moveShip;
 }
 
-bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int lineMax, unsigned int columnMax) // FALTA CORRIGIR
+bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int lineMax, unsigned int columnMax)
 {
-	bool moveShip = false; // booleano que a função devolve que indica se o navio se move ou não
+	bool moveShip = false; // Booleano que a função devolve que indica se o navio se move ou não
 
 	/* A função move verifica primeiro se é possível mover o navio uma casa numa direção aleatória.
 	Se após esta alteração o navio permanecer totalmente dentro do tabuleiro a função move devolve true e altera pelo menos a posição inicial em uma casa.
@@ -149,14 +149,14 @@ bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int l
 			}
 			break;
 		case 'S': // Move para sul
-			if (position.lin < lineMax)
+			if (position.lin < (lineMax - 1))
 			{
 				position.lin = position.lin + 1;
 				moveShip = true;
 			}
 			break;
 		case 'E': // Move para este
-			if (position.col + size - 1 < columnMax)
+			if (position.col + size - 1 < (columnMax - 1))
 			{
 				position.col = position.col + 1;
 				moveShip = true;
@@ -186,14 +186,14 @@ bool Ship::moveRand(unsigned int lineMin, unsigned int columnMin, unsigned int l
 			}
 			break;
 		case 'S': // Move para sul
-			if (position.lin + size - 1 < columnMax)
+			if (position.lin + size - 1 < (columnMax - 1))
 			{
 				position.lin = position.lin + 1;
 				moveShip = true;
 			}
 			break;
 		case 'E': // Move para este
-			if (position.col < lineMax)
+			if (position.col < (lineMax -1))
 			{
 				position.col = position.col + 1;
 				moveShip = true;

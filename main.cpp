@@ -17,40 +17,35 @@
 using namespace std;
 
 int main()
-{
-	impressaoTitulo(); // Imprime título do jogo
-	startMenu(); // FALTA ACABAR
-	
+{	
+	createMenu();
+
 	impressaoTitulo();
 	setcolor(11, 0);
 	cout << setw(48) << "<< CRIAR JOGADOR 1 >>" << endl << endl;
 	setcolor(7, 0);
 	Player playerone(getFilename(), getPlayername()); // Inicializa classe Player do jogador 1
-	/*
+	
 	clrscr(); // Limpa ecrâ;
 	impressaoTitulo();
 	setcolor(11, 0);
 	cout << setw(48) <<"<< CRIAR JOGADOR 2>>" << endl << endl;
 	setcolor(7, 0);
 	Player playertwo(getFilename(), getPlayername()); // Inicializa classe Player do jogador 1
-	*/
-	
-	cout << playerone.getBoard(); // TESTE
-	string abc;
-	playerone.move();
-	cin >> abc; // Teste
-	cout << playerone.getBoard();
-	cin >> abc;
-	playerone.move();
-	cin >> abc; // Teste
-	cout << playerone.getBoard();
-	cin >> abc;
-	playerone.move(); // Teste
-	cin >> abc;
-	cout << playerone.getBoard();
 	
 	
+	playerone.attackBoard(playerone.getBomb());
+	playerone.attackBoard(playerone.getBomb());
+	playerone.attackBoard(playerone.getBomb());
+	playerone.attackBoard(playerone.getBomb());
+	playerone.attackBoard(playerone.getBomb());
+	playerone.attackBoard(playerone.getBomb());
+	
+	/*while ()
 
+
+
+	*/
 	
 	return 0;
 }

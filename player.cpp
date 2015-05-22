@@ -46,20 +46,16 @@ bool Player::validCoord(string &coordenada) const
 	return validade;
 }
 
-void Player::move() // APAGAR - VERSAO PARA TESTAR MOVESHIPS
-{
-	srand(time(NULL));
-	board.moveShips();
-}
-
 Bomb Player::getBomb() const
 {
+	cout << board;
+	
 	string coord;
 	Position<char> pos;
-
+	
 	do
 	{
-		cout << ">> COORDENADAS A ATACAR: ";
+		cout << ">> COORDENADAS A ATACAR (Linha " << coordenadas.at(1).at(0) << ".." << coordenadas.at(1).at(board.getLines() - 1) << ") (Coluna " << coordenadas.at(0).at(0) << ".." << coordenadas.at(0).at(board.getColumns() - 1) << ") : ";
 		cin >> coord;
 
 		if (validCoord(coord))
@@ -67,6 +63,7 @@ Bomb Player::getBomb() const
 			setcolor(2, 0);
 			cout << ":: Coordenadas inseridas com sucesso!" << endl << endl;
 			setcolor(7, 0);
+			sleep(1000);
 		}
 		
 		else
@@ -85,13 +82,17 @@ Bomb Player::getBomb() const
 	return bomba;
 }
 
-void Player::attackBoard(const Bomb &b) // FALTA TESTAR
-{
+void Player::attackBoard(const Bomb &b)
+{	
+	board.moveShips(); // Faz mover os navios aleatoriamente
+	cout << board; // Mostra os navios após movimento aleatório dos mesmos
+
 	if (board.attack(b))
 	{
 		setcolor(2, 0);
 		cout << ":: RESULTADO: Bom tiro! Acertou no navio!" << endl << endl;
 		setcolor(7, 0);
+		sleep(1000);
 	}
 
 	else
@@ -99,7 +100,10 @@ void Player::attackBoard(const Bomb &b) // FALTA TESTAR
 		setcolor(4, 0);
 		cout << ":: RESULTADO: Falhou o alvo." << endl << endl;
 		setcolor(7, 0);
+		sleep(1000);
 	}
+
+	cout << board;
 }
 
 Board Player::getBoard() const
