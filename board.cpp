@@ -102,6 +102,11 @@ void Board::setBoard()
 	}
 }
 
+vector<Ship> Board::getShips() // devolve o vetor de navios do
+{
+	return ships;
+}
+
 void Board::moveShips()
 {
 	srand(time(NULL)); // Permite gerar números aleatórios
@@ -295,3 +300,74 @@ ostream& operator<<(ostream& os, const Board& tab)
 	tab.display();
 	return os;
 }
+
+/*
+void Board::preview() const
+{
+	for (size_t i = 0; i < board.size(); i++) // Imprime coordenadas das colunas da primeira linha do tabuleiro
+	{
+		gotoxy(i * 2 + 3, 0);
+		setcolor(15, 0);
+		cout << coordenadas.at(0).at(i);
+	}
+
+	for (size_t i = 0; i < board.size(); i++) // Imprime coordenadas das linhas da primeira coluna do tabuleiro
+	{
+		gotoxy(1, i + 1);
+		setcolor(15, 0);
+		cout << coordenadas.at(1).at(i);
+	}
+	for (size_t i = 0; i < board.size(); i++) // Imprime segunda coluna vazia
+	{
+		gotoxy(2, i + 1);
+		setcolor(0, 7);
+		cout << " ";
+	}
+
+	for (size_t i = 0; i < numLines; i++) // Impressão do tabuleiro
+	{
+		for (size_t j = 0; j < numColumns; j++)
+		{
+			gotoxy(j * 2 + 3, i + 1);
+			if (board.at(i).at(j) == -1)
+			{
+				setcolor(9, 7);
+				cout << '.' << " "; // Impressão caso seja "mar" (-1)
+			}
+
+			else if (ships.at(board.at(i).at(j)).getOrientation() == 'H')
+			{
+				Position <unsigned int> position = ships.at(board.at(i).at(j)).getPosition();
+				int coordCol = j;
+				size_t partNumber = 0; // Índice da célula do barco "inicial"
+
+				while (coordCol > position.col)
+				{
+					partNumber++;
+					coordCol = coordCol - 1;
+				}
+
+				setcolor(ships.at(board.at(i).at(j)).getColor(), 7);
+				cout << ships.at(board.at(i).at(j)).getStatus()[partNumber] << " ";
+			}
+
+			else if (ships.at(board.at(i).at(j)).getOrientation() == 'V')
+			{
+				Position <unsigned int> position = ships.at(board.at(i).at(j)).getPosition();
+				int coordLin = i;
+				size_t partNumber = 0; // Índice da célula do barco "inicial"
+
+				while (coordLin > position.lin)
+				{
+					partNumber++;
+					coordLin = coordLin - 1;
+				}
+
+				setcolor(ships.at(board.at(i).at(j)).getColor(), 7);
+				cout << ships.at(board.at(i).at(j)).getStatus()[partNumber] << " ";
+			}
+		}
+	}
+	cout << endl << endl;
+	setcolor(7, 0);
+}*/

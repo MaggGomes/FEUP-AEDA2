@@ -1,8 +1,33 @@
-﻿Build started 22/05/2015 23:51:51.
+﻿Build started 23/05/2015 01:44:19.
      1>Project "C:\Users\Manuel Gomes\Documents\GitHub\Trabalho_2\Trabalho2.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /FR"Debug\\" /Gd /TP /analyze- /errorReport:prompt functions.cpp
+         C:\Program Files (x86)\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /FR"Debug\\" /Gd /TP /analyze- /errorReport:prompt board.cpp bomb.cpp player.cpp ship.cpp
+         ship.cpp
+         player.cpp
+         bomb.cpp
+         board.cpp
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.cpp(56): warning C4018: '>=' : signed/unsigned mismatch
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.cpp(65): warning C4018: '>=' : signed/unsigned mismatch
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.cpp(78): warning C4018: '>=' : signed/unsigned mismatch
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.cpp(87): warning C4018: '>=' : signed/unsigned mismatch
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.cpp(112): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.cpp(147): warning C4018: '>=' : signed/unsigned mismatch
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.cpp(153): warning C4018: '>=' : signed/unsigned mismatch
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.cpp(165): warning C4018: '>' : signed/unsigned mismatch
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.cpp(177): warning C4018: '>' : signed/unsigned mismatch
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.cpp(229): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.cpp(231): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.cpp(246): warning C4018: '>' : signed/unsigned mismatch
+     1>c:\users\manuel gomes\documents\github\trabalho_2\board.cpp(262): warning C4018: '>' : signed/unsigned mismatch
+         Generating Code...
+         C:\Program Files (x86)\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /FR"Debug\\" /Gd /TP /analyze- /errorReport:prompt functions.cpp main.cpp
+         main.cpp
+     1>c:\users\manuel gomes\documents\github\trabalho_2\main.cpp(102): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\manuel gomes\documents\github\trabalho_2\main.cpp(106): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\manuel gomes\documents\github\trabalho_2\main.cpp(116): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\manuel gomes\documents\github\trabalho_2\main.cpp(117): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
          functions.cpp
+         Generating Code...
        Link:
          C:\Program Files (x86)\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Manuel Gomes\Documents\GitHub\Trabalho_2\Debug\Trabalho2.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Manuel Gomes\Documents\GitHub\Trabalho_2\Debug\Trabalho2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Manuel Gomes\Documents\GitHub\Trabalho_2\Debug\Trabalho2.lib" /MACHINE:X86 Debug\board.obj
          Debug\bomb.obj
@@ -17,4 +42,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.55
+Time Elapsed 00:00:09.47

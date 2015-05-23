@@ -95,7 +95,9 @@ void Player::attackBoard(const Bomb &b)
 	{
 		setcolor(2, 0);
 		cout << ":: RESULTADO: Bom tiro! Acertou no navio!" << endl << endl;
+		Sleep(1000);
 		setcolor(7, 0);
+		cout << board;
 		Sleep(1000);
 	}
 

@@ -11,4 +11,10 @@ struct Position
 	T lin, col;
 };
 
+struct Score
+{
+	string name;
+	int points;
+};
+
 #endif // STRUCTS_H

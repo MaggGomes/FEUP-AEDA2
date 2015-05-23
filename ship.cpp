@@ -251,7 +251,7 @@ bool Ship::attack(size_t partNumber)
 bool Ship::isDestroyed() const
 {
 	int numlowercase = 0; // Número de letras minúculas
-	double halfship = status.length() / 2; // metade do comprimento do barco;
+	double halfship = size / 2; // metade do comprimento do barco;
 
 	bool destroyed = false;
 
@@ -261,9 +261,12 @@ bool Ship::isDestroyed() const
 		numlowercase++;
 		}
 	if (numlowercase >= halfship) // O navio é considerado destruído se pelo menos 50% das suas células foram atingidas por bombas
-		destroyed = true;
+		return true;
 
-	return destroyed;
+	if (size == numlowercase)
+		return true;
+
+	return false;
 }
 
 Position<unsigned int> Ship::getPosition() const

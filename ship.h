@@ -18,7 +18,7 @@ public:
 	unsigned int getSize() const; // Devolve tamanho do navio
 	unsigned int getColor() const; // Devolve cor do navio
 	void show() const;              // Mostra os atributos do navio (para debugging)
-
+	
 private:
 	char symbol; // 'P' = "porta-aviões"; 'F' = "fragata"; … 
 	Position<unsigned int> position; // Coordenadas do canto superior esquerdo do navio

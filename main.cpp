@@ -6,6 +6,7 @@
 #include <vector>
 #include <iomanip>
 #include <Windows.h>
+#include <time.h>
 
 #include "variables.h"
 #include "structs.h"
@@ -18,10 +19,21 @@
 using namespace std;
 
 int main()
-{	
+{
+
+
+	clock_t inic1, fim1, inic2, fim2;
+	clock_t acum1 = 0;
+	clock_t acum2 = 0;
+	int area1, area2;
+	int	ocup1 = 0; 
+	int	ocup2 = 0;
+	double iacum1 = 0;
+	double iacum2 = 0;
 	createMenu();
-	
-	
+	Score p1sc, p2sc;
+
+	/*
 	clrscr();
 	impressaoTitulo();
 	setcolor(11, 0);
@@ -35,26 +47,44 @@ int main()
 	cout << setw(48) <<"<< CRIAR JOGADOR 2>>" << endl << endl;
 	setcolor(7, 0);
 	Player playertwo(getFilename(), getPlayername()); // Inicializa classe Player do jogador 2
-	
-	
-	/*setcolor(11, 0);
-	cout << setw(48) << "<< CRIAR JOGADOR 1 >>" << endl << endl;
-	Player playerone(getFilename(), getPlayername()); // Inicializa classe Player do jogador 1
-	
-
-	cout << endl;
-	cout << endl;
-
-	setcolor(11, 0);
-	cout << setw(48) << "<< CRIAR JOGADOR 2>>" << endl << endl;
-	Player playertwo(getFilename(), getPlayername()); // Inicializa classe Player do jogador 2
 	*/
 	
-	while (!playerone.fleetDestroyed() || !playertwo.fleetDestroyed())
-	{
+	
+	clrscr();
+	impressaoTitulo();
+	setcolor(11, 0);
+	cout << setw(48) << "<< CRIAR JOGADOR 1 >>" << endl << endl;
+	setcolor(7, 0);
+	Player playerone(getFilename(), getPlayername()); // Inicializa classe Player do jogador 1
+	playerone.showBoard();
+	cout << "Tabuleiro de " << playerone.getPlayerName() << endl;
+	Sleep(5000);
+	
+	clrscr();
+	impressaoTitulo();
+	setcolor(11, 0);
+	cout << setw(48) <<"<< CRIAR JOGADOR 2>>" << endl << endl;
+	setcolor(7, 0);
+	Player playertwo(getFilename(), getPlayername()); // Inicializa classe Player do jogador 2
+	playertwo.showBoard();
+	cout << "Tabuleiro de " << playertwo.getPlayerName() << endl;
+	Sleep(5000);
+
+
+	//while (!playerone.fleetDestroyed() || !playertwo.fleetDestroyed())
+	//{
+		inic1 = clock();
 		playertwo.attackBoard(playertwo.getBomb());
+		fim1 = clock();
+		acum1 = (acum1 + (fim1 - inic1));
+		inic2 = clock();
 		playerone.attackBoard(playerone.getBomb());
-	}
+		fim2 = clock();
+		acum2 = (acum2 + (fim2 - inic2));
+	//}
+
+		iacum1 = acum1 / CLOCKS_PER_SEC;
+		iacum2 = acum2 / CLOCKS_PER_SEC;
 
 	if (playerone.fleetDestroyed())
 	{
@@ -68,7 +98,26 @@ int main()
 		cout << ":: PARABENS! O jogador " << playerone.getPlayerName() << " venceu!" << endl;
 		Sleep(2000);
 	}
-
 	
+	for (int y = 0; y < playertwo.getBoard().getShips().size(); y++)
+	{
+		ocup1 = ocup1 + playertwo.getBoard().getShips().at(y).getSize();
+	}
+	for (int z = 0; z < playerone.getBoard().getShips().size(); z++)
+	{
+		ocup2 = ocup2 + playertwo.getBoard().getShips().at(z).getSize();
+	} 
+
+	area1 = playertwo.getBoard().getLines() * playertwo.getBoard().getColumns();
+	area2 = playerone.getBoard().getLines() * playerone.getBoard().getColumns();
+
+	p1sc.name = playerone.getPlayerName();
+	p2sc.name = playertwo.getPlayerName();
+	p1sc.points = iacum1 * (ocup1 / area1);
+	p2sc.points = iacum2 * (ocup2 / area2);
+	
+	cout << p1sc.name << " - " << p1sc.points << endl;
+	cout << p2sc.name << " - " << p2sc.points << endl;
+
 	return 0;
 }

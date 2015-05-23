@@ -243,7 +243,8 @@ void createMenu() // FALTA COMPLETAR
 
 /*void print_boards(Player &one, Player &two)
 {
-	UM.showBoard();	DOIS.showBoard();
+	UM.showBoard();	
+	DOIS.showBoard();
 	UM.getBoard().show();
 	DOIS.getBoard().show();
 }*/
