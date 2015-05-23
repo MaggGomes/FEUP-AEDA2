@@ -18,20 +18,82 @@
 
 using namespace std;
 
+vector<Score> atScore(Score &sc, vector<Score> &vcs)
+{
+	vector<Score> temp,temp2;
+	int i = 0;
+
+	while (sc.points > vcs.at(i).points)
+	{
+		i++;
+	}
+		
+	for (size_t j = 0; j < i; j++)	
+	{
+		temp.push_back(vcs.at(j));
+	}
+
+	temp.push_back(sc);
+		
+	for (size_t h = 0; h < (vcs.size() - i); h++)	
+	{
+		temp.push_back(vcs.at(i + h));
+	}
+
+
+	return temp;
+}
+
+void createScoreDoc(vector<Score> &vcs)
+{
+	ofstream doc;
+	remove("score.txt");
+	doc.open("score.txt");
+	
+	for (size_t i = 0; i < 10; i++)
+	{
+		doc << vcs.at(i).name << " - " << vcs.at(i).points << endl;
+	}
+
+	doc.close();
+}
+
+vector<Score> readScore()
+{
+	string temp;
+	Score temp1;
+	vector<Score> vect;
+	ifstream vec ("score.txt");
+
+	for (size_t i = 0; i < 10; i++)
+	{
+		vec >> temp1.name;
+		vec.ignore(100, '-');
+		vec >> temp1.points;
+		vec.ignore(100, '-');
+		vect.push_back(temp1);
+		vec.ignore(100, '\n');
+	}
+
+	return vect;
+}
+
 int main()
 {
-
 
 	clock_t inic1, fim1, inic2, fim2;
 	clock_t acum1 = 0;
 	clock_t acum2 = 0;
-	int area1, area2;
-	int	ocup1 = 0; 
-	int	ocup2 = 0;
+	double area1, area2;
+	double	ocup1 = 0; 
+	double	ocup2 = 0;
 	double iacum1 = 0;
 	double iacum2 = 0;
 	createMenu();
 	Score p1sc, p2sc;
+	vector < Score >  scores;
+	
+	scores = readScore();
 
 	/*
 	clrscr();
@@ -48,7 +110,6 @@ int main()
 	setcolor(7, 0);
 	Player playertwo(getFilename(), getPlayername()); // Inicializa classe Player do jogador 2
 	*/
-	
 	
 	clrscr();
 	impressaoTitulo();
@@ -92,7 +153,6 @@ int main()
 		Sleep(2000);
 	}
 
-
 	else if (playertwo.fleetDestroyed())
 	{
 		cout << ":: PARABENS! O jogador " << playerone.getPlayerName() << " venceu!" << endl;
@@ -115,9 +175,14 @@ int main()
 	p2sc.name = playertwo.getPlayerName();
 	p1sc.points = iacum1 * (ocup1 / area1);
 	p2sc.points = iacum2 * (ocup2 / area2);
-	
-	cout << p1sc.name << " - " << p1sc.points << endl;
-	cout << p2sc.name << " - " << p2sc.points << endl;
+
+	Score x1, x2, x3, x4, x5, x6, x7, x8, x9, x10;
+
+	scores = atScore(p1sc, scores);
+	scores = atScore(p2sc, scores);
+
+
+	createScoreDoc(scores);
 
 	return 0;
 }

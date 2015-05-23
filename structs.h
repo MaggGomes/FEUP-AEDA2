@@ -14,7 +14,7 @@ struct Position
 struct Score
 {
 	string name;
-	int points;
+	double points;
 };
 
 #endif // STRUCTS_H
