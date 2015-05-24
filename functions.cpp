@@ -230,7 +230,7 @@ void createMenu() // FALTA COMPLETAR
 					break;
 				case 1:
 				{
-					cout << "\n\n\nThis is the options..."; // FALTA CORRIGIR - MOSTRAR SCORES
+					cout << "É PARA IMPLEMENTAR AQUI A FUNÇÃO SCORES"; // FALTA CORRIGIR - MOSTRAR SCORES
 					Sleep(1000);
 				} break;
 				case 2:

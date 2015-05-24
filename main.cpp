@@ -81,6 +81,9 @@ vector<Score> readScore()
 int main()
 {
 
+
+
+
 	clock_t inic1, fim1, inic2, fim2;
 	clock_t acum1 = 0;
 	clock_t acum2 = 0;
@@ -94,6 +97,10 @@ int main()
 	vector < Score >  scores;
 	
 	scores = readScore();
+
+
+
+
 
 	/*
 	clrscr();
@@ -120,6 +127,7 @@ int main()
 	playerone.showBoard();
 	cout << "Tabuleiro de " << playerone.getPlayerName() << endl;
 	Sleep(5000);
+	cin.ignore(5000, '\n');
 	
 	clrscr();
 	impressaoTitulo();
@@ -130,10 +138,11 @@ int main()
 	playertwo.showBoard();
 	cout << "Tabuleiro de " << playertwo.getPlayerName() << endl;
 	Sleep(5000);
+	cin.ignore(5000, '\n');
 
 
-	//while (!playerone.fleetDestroyed() || !playertwo.fleetDestroyed())
-	//{
+	while (!playerone.fleetDestroyed() || !playertwo.fleetDestroyed())
+	{
 		inic1 = clock();
 		playertwo.attackBoard(playertwo.getBomb());
 		fim1 = clock();
@@ -142,7 +151,7 @@ int main()
 		playerone.attackBoard(playerone.getBomb());
 		fim2 = clock();
 		acum2 = (acum2 + (fim2 - inic2));
-	//}
+	}
 
 		iacum1 = acum1 / CLOCKS_PER_SEC;
 		iacum2 = acum2 / CLOCKS_PER_SEC;
