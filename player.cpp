@@ -29,6 +29,11 @@ void Player::boardDebug() const
 	board.show();
 }
 
+void Player::boardPreview()const
+{
+	board.preview();
+}
+
 bool Player::validCoord(string &coordenada) const
 {
 	int nl = board.getLines();

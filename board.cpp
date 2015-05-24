@@ -301,25 +301,24 @@ ostream& operator<<(ostream& os, const Board& tab)
 	return os;
 }
 
-/*
 void Board::preview() const
 {
 	for (size_t i = 0; i < board.size(); i++) // Imprime coordenadas das colunas da primeira linha do tabuleiro
 	{
-		gotoxy(i * 2 + 3, 0);
+		gotoxy(i * 2 + 3, 22);
 		setcolor(15, 0);
 		cout << coordenadas.at(0).at(i);
 	}
 
 	for (size_t i = 0; i < board.size(); i++) // Imprime coordenadas das linhas da primeira coluna do tabuleiro
 	{
-		gotoxy(1, i + 1);
+		gotoxy(1, i + 1 + 22);
 		setcolor(15, 0);
 		cout << coordenadas.at(1).at(i);
 	}
 	for (size_t i = 0; i < board.size(); i++) // Imprime segunda coluna vazia
 	{
-		gotoxy(2, i + 1);
+		gotoxy(2, i + 1 + 22);
 		setcolor(0, 7);
 		cout << " ";
 	}
@@ -328,7 +327,7 @@ void Board::preview() const
 	{
 		for (size_t j = 0; j < numColumns; j++)
 		{
-			gotoxy(j * 2 + 3, i + 1);
+			gotoxy(j * 2 + 3, i + 1 + 22);
 			if (board.at(i).at(j) == -1)
 			{
 				setcolor(9, 7);
@@ -370,4 +369,4 @@ void Board::preview() const
 	}
 	cout << endl << endl;
 	setcolor(7, 0);
-}*/
+}

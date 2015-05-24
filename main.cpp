@@ -96,36 +96,16 @@ int main()
 
 		scores = readScore();
 
-
-
-
-
-		/*
 		clrscr();
 		impressaoTitulo();
 		setcolor(11, 0);
 		cout << setw(48) << "<< CRIAR JOGADOR 1 >>" << endl << endl;
 		setcolor(7, 0);
 		Player playerone(getFilename(), getPlayername()); // Inicializa classe Player do jogador 1
-
-		clrscr(); // Limpa ecrâ;
-		impressaoTitulo();
-		setcolor(11, 0);
-		cout << setw(48) <<"<< CRIAR JOGADOR 2>>" << endl << endl;
-		setcolor(7, 0);
-		Player playertwo(getFilename(), getPlayername()); // Inicializa classe Player do jogador 2
-		*/
-
-		clrscr();
-		impressaoTitulo();
-		setcolor(11, 0);
-		cout << setw(48) << "<< CRIAR JOGADOR 1 >>" << endl << endl;
-		setcolor(7, 0);
-		Player playerone(getFilename(), getPlayername()); // Inicializa classe Player do jogador 1
-		playerone.showBoard();
-		cout << "Tabuleiro de " << playerone.getPlayerName() << endl;
+		cout << endl;
+		cout << ">> TABULEIRO DE " << playerone.getPlayerName() << ":" << endl;
+		playerone.boardPreview();
 		Sleep(5000);
-		cin.ignore(5000, '\n');
 
 		clrscr();
 		impressaoTitulo();
@@ -133,11 +113,9 @@ int main()
 		cout << setw(48) << "<< CRIAR JOGADOR 2>>" << endl << endl;
 		setcolor(7, 0);
 		Player playertwo(getFilename(), getPlayername()); // Inicializa classe Player do jogador 2
-		playertwo.showBoard();
-		cout << "Tabuleiro de " << playertwo.getPlayerName() << endl;
+		cout << ">> TABULEIRO DE " << playertwo.getPlayerName() << ":" << endl;
+		playertwo.boardPreview();
 		Sleep(5000);
-		cin.ignore(5000, '\n');
-
 
 		while (!playerone.fleetDestroyed() || !playertwo.fleetDestroyed())
 		{

@@ -23,8 +23,8 @@ public:
 	bool getShipstatus();			 // Se devolver True, os navios já se encontram todos destruídos
 	void display() const;            // Mostra o tabuleiro colorido durante o jogo
 	void show() const;               // Mostra os atributos do tabuleiro (para debugging)
+	void preview() const;            // Mostra o tabuleiro antes do jogo começar
 	vector<Ship> getShips();  // devolve o vetor de navios do tabuleiro
-	//void preview() const; //FALTA VERIFICAR
 	friend ostream& operator<<(ostream& os, const Board& tab);
 	
 
