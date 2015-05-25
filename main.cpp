@@ -18,66 +18,6 @@
 
 using namespace std;
 
-vector<Score> atScore(Score &sc, vector<Score> &vcs)
-{
-	vector<Score> temp,temp2;
-	int i = 0;
-
-	while (sc.points > vcs.at(i).points)
-	{
-		i++;
-	}
-		
-	for (size_t j = 0; j < i; j++)	
-	{
-		temp.push_back(vcs.at(j));
-	}
-
-	temp.push_back(sc);
-		
-	for (size_t h = 0; h < (vcs.size() - i); h++)	
-	{
-		temp.push_back(vcs.at(i + h));
-	}
-
-
-	return temp;
-}
-
-void createScoreDoc(vector<Score> &vcs)
-{
-	ofstream doc;
-	remove("score.txt");
-	doc.open("score.txt");
-	
-	for (size_t i = 0; i < 10; i++)
-	{
-		doc << vcs.at(i).name << " - " << vcs.at(i).points << endl;
-	}
-
-	doc.close();
-}
-
-vector<Score> readScore()
-{
-	string temp;
-	Score temp1;
-	vector<Score> vect;
-	ifstream vec ("score.txt");
-
-	for (size_t i = 0; i < 10; i++)
-	{
-		vec >> temp1.name;
-		vec.ignore(100, '-');
-		vec >> temp1.points;
-		vec.ignore(100, '-');
-		vect.push_back(temp1);
-		vec.ignore(100, '\n');
-	}
-
-	return vect;
-}
-
 int main()
 {
 	while (true) // Permite repetir o jogo até o utilizador querer sair do mesmo

@@ -230,8 +230,8 @@ void createMenu() // FALTA COMPLETAR
 					break;
 				case 1:
 				{
-					cout << "É PARA IMPLEMENTAR AQUI A FUNÇÃO SCORES"; // FALTA CORRIGIR - MOSTRAR SCORES
-					Sleep(1000);
+					clrscr();
+					showScore();
 				} break;
 				case 2:
 					exit(0);
@@ -240,6 +240,83 @@ void createMenu() // FALTA COMPLETAR
 		}
 	}
 }
+
+vector<Score> atScore(Score &sc, vector<Score> &vcs)
+{
+	vector<Score> temp, temp2;
+	int i = 0;
+
+	while (sc.points > vcs.at(i).points)
+	{
+		i++;
+	}
+
+	for (size_t j = 0; j < i; j++)
+	{
+		temp.push_back(vcs.at(j));
+	}
+
+	temp.push_back(sc);
+
+	for (size_t h = 0; h < (vcs.size() - i); h++)
+	{
+		temp.push_back(vcs.at(i + h));
+	}
+
+
+	return temp;
+}
+
+void createScoreDoc(vector<Score> &vcs)
+{
+	ofstream doc;
+	remove("score.txt");
+	doc.open("score.txt");
+
+	for (size_t i = 0; i < 10; i++)
+	{
+		doc << vcs.at(i).name << " - " << vcs.at(i).points << endl;
+	}
+
+	doc.close();
+}
+
+vector<Score> readScore()
+{
+	string temp;
+	Score temp1;
+	vector<Score> vect;
+	ifstream vec("score.txt");
+
+	for (size_t i = 0; i < 10; i++)
+	{
+		vec >> temp1.name;
+		vec.ignore(100, '-');
+		vec >> temp1.points;
+		vec.ignore(100, '-');
+		vect.push_back(temp1);
+		vec.ignore(100, '\n');
+	}
+
+	return vect;
+}
+
+void showScore()
+{
+	vector<Score> temp = readScore();
+
+	setcolor(3, 0);
+	cout << " PLAYER - POINTS " << endl;
+	setcolor(7, 0);
+
+	for (size_t i = 0; i < 10; i++)
+	{
+		cout << setw(7) << temp.at(i).name << " - " << temp.at(i).points << endl;
+	}
+
+	system("pause");
+}
+
 
 /*void print_boards(Player &one, Player &two)
 {
