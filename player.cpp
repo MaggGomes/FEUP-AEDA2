@@ -52,16 +52,16 @@ bool Player::validCoord(string &coordenada) const
 	return validade;
 }
 
-Bomb Player::getBomb() const
+Bomb Player::getBomb(unsigned int &r, string &player_name) const
 {
-	cout << board;
-	
 	string coord;
 	Position<char> pos;
-	
+
 	do
 	{
 		clrscr();
+		cout << "Ronda " << r << endl;
+		cout << "Turno de " << player_name << endl;
 		cout << board;
 		cout << ">> COORDENADAS A ATACAR (Linha " << coordenadas.at(1).at(0) << ".." << coordenadas.at(1).at(board.getLines() - 1) << ") (Coluna " << coordenadas.at(0).at(0) << ".." << coordenadas.at(0).at(board.getColumns() - 1) << ") : ";
 		cin >> coord;
@@ -73,7 +73,7 @@ Bomb Player::getBomb() const
 			setcolor(7, 0);
 			Sleep(1200);
 		}
-		
+
 		else
 		{
 			setcolor(4, 0);
@@ -82,42 +82,44 @@ Bomb Player::getBomb() const
 			Sleep(1400);
 		}
 	} while (!validCoord(coord));
-	
+
 	pos.lin = coord.at(0);
 	pos.col = coord.at(1);
 
 	Bomb bomba(pos);
-	
+
 	return bomba;
 }
 
-void Player::attackBoard(const Bomb &b,const string &name)
-{	
+void Player::attackBoard(const Bomb &b, unsigned int &r, string &player_name)
+{
 	board.moveShips(); // Faz mover os navios aleatoriamente
-	cout << "<<< " << name << "'s turn. >>>" << endl;
 	cout << board; // Mostra os navios após movimento aleatório dos mesmos
 
 	if (board.attack(b))
 	{
+		clrscr();
+		cout << "Ronda " << r << endl;
+		cout << "Turno de " << player_name << endl;
+		cout << board;
 		setcolor(2, 0);
 		cout << ":: RESULTADO: Bom tiro! Acertou no navio!" << endl << endl;
-		Sleep(1000);
 		setcolor(7, 0);
-		cout << "<<< " << name << "'s turn. >>>" << endl;
 		cout << board;
 		Sleep(1000);
 	}
 
 	else
 	{
+		clrscr();
+		cout << "Ronda " << r << endl;
+		cout << "Turno de " << player_name << endl;
+		cout << board;
 		setcolor(4, 0);
 		cout << ":: RESULTADO: Falhou o alvo." << endl << endl;
 		setcolor(7, 0);
 		Sleep(1000);
 	}
-
-	cout << "<<< " << name << "'s turn. >>>" << endl;
-	cout << board;
 }
 
 Board Player::getBoard() const

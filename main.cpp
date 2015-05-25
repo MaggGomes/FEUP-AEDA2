@@ -22,6 +22,7 @@ int main()
 {
 	while (true) // Permite repetir o jogo até o utilizador querer sair do mesmo
 	{
+		unsigned int r = 1; // Contador do numero de rondas ao longo do jogo
 		clock_t inic1, fim1, inic2, fim2;
 		clock_t acum1 = 0;
 		clock_t acum2 = 0;
@@ -55,16 +56,18 @@ int main()
 		cout << setw(48) << "<< CRIAR JOGADOR 2>>" << endl << endl;
 		setcolor(7, 0);
 		Player playertwo(getFilename(), getPlayername()); // Inicializa classe Player do jogador 2
+		
 		/*
 		cout << endl;
 		cout << ">> TABULEIRO DE " << playertwo.getPlayerName() << ":" << endl;
 		playertwo.boardPreview();
 		Sleep(5000);
 		*/
+
 		while (!playerone.fleetDestroyed() || !playertwo.fleetDestroyed())
 		{
 			inic1 = clock();
-			playertwo.attackBoard(playertwo.getBomb(), playerone.getPlayerName());
+			playertwo.attackBoard(playertwo.getBomb(r, playerone.getPlayerName()),r,playerone.getPlayerName());
 			fim1 = clock();
 			acum1 = (acum1 + (fim1 - inic1));
 
@@ -76,7 +79,8 @@ int main()
 			}
 
 			inic2 = clock();
-			playerone.attackBoard(playerone.getBomb(),playertwo.getPlayerName());
+			playerone.attackBoard(playerone.getBomb(r, playertwo.getPlayerName()),r,playertwo.getPlayerName());
+			r++;
 			fim2 = clock();
 			acum2 = (acum2 + (fim2 - inic2));
 
