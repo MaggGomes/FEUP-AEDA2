@@ -19,10 +19,5 @@ bool rotation(); // Roda o navio (true=roda,false=mantém a orientação)
 string getPlayername(); // Pergunta pelo nome do jogador
 string getFilename(); // Pergunta pelo nome do ficheiro de configuração do tabuleiro
 void createMenu(); // FALTA COMPLETAR - MENU ALTERNATIVO
-vector<Score> atScore(Score &sc, vector<Score> &vcs);
-void createScoreDoc(vector<Score> &vcs);
-void showScore();
-void createScoreDoc(vector<Score> &vcs);
-vector<Score> readScore();
 
 #endif // FUNCTIONS_H
