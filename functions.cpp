@@ -171,6 +171,7 @@ void createMenu() // FALTA COMPLETAR
 	string Menu[3] = { "<<    INICIAR JOGO   >>", "<<     TOP SCORES    >>", "<<    SAIR DO JOGO   >>" };
 	bool validade = true;
 	int pointer = 0;
+	int temp;
 
 	while (validade)
 	{
@@ -232,6 +233,9 @@ void createMenu() // FALTA COMPLETAR
 				{
 					clrscr();
 					showScore();
+					setcolor(3, 0);
+					cout << endl << "PRESS DOWN ARROW KEY TO RETURN TO MENU";
+					setcolor(7, 0);
 				} break;
 				case 2:
 					exit(0);
@@ -306,15 +310,15 @@ void showScore()
 {
 	vector<Score> temp = readScore();
 
+	setcolor(11, 0);
+	cout << "<<<< PLAYER - POINTS >>>>" << endl;
+	
 	setcolor(3, 0);
-	cout << " PLAYER - POINTS " << endl;
-	setcolor(7, 0);
-
 	for (size_t i = 0; i < 10; i++)
 	{
-		cout << setw(7) << temp.at(i).name << " - " << temp.at(i).points << endl;
+		cout << setw(11) << temp.at(i).name << " - " << temp.at(i).points << endl;
 	}
-	system("pause");
+	setcolor(7, 0);
 }
 
 
