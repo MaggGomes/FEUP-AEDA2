@@ -272,10 +272,12 @@ void createScoreDoc(vector<Score> &vcs)
 	ofstream doc;
 	remove("score.txt");
 	doc.open("score.txt");
+	
+	doc << " PLAYER - POINTS" << endl;
 
 	for (size_t i = 0; i < 10; i++)
 	{
-		doc << vcs.at(i).name << " - " << vcs.at(i).points << endl;
+		doc << setw(7) << vcs.at(i).name << " - " << vcs.at(i).points << endl;
 	}
 
 	doc.close();
@@ -293,7 +295,6 @@ vector<Score> readScore()
 		vec >> temp1.name;
 		vec.ignore(100, '-');
 		vec >> temp1.points;
-		vec.ignore(100, '-');
 		vect.push_back(temp1);
 		vec.ignore(100, '\n');
 	}
@@ -313,7 +314,6 @@ void showScore()
 	{
 		cout << setw(7) << temp.at(i).name << " - " << temp.at(i).points << endl;
 	}
-
 	system("pause");
 }
 

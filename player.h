@@ -16,7 +16,7 @@ public:
 	void boardPreview() const;    // Mostra o tabuleiro do jogador antes do jogo começar
 	bool validCoord(string &coordenada) const; // Valida as coordenadas da bomba inseridas pelo utilizador
 	Bomb getBomb() const;         // Pergunta pelas coordenadas da bomba e coloca bomba
-	void attackBoard(const Bomb &b); // "Recebe" a bomba do adversário; Atualiza o tabuleiro tabuleiro tendo em conta o dano da bomba e se o navio se move
+	void attackBoard(const Bomb &b, const string &name); // "Recebe" a bomba do adversário; Atualiza o tabuleiro tabuleiro tendo em conta o dano da bomba e se o navio se move
 	void move(); // APAGAR - VERSAO PARA TESTAR MOVESHIPS
 	Board getBoard() const; // devolve o tabuleiro
 	bool fleetDestroyed();

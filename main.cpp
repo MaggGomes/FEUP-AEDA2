@@ -42,10 +42,12 @@ int main()
 		cout << setw(48) << "<< CRIAR JOGADOR 1 >>" << endl << endl;
 		setcolor(7, 0);
 		Player playerone(getFilename(), getPlayername()); // Inicializa classe Player do jogador 1
+		/*
 		cout << endl;
 		cout << ">> TABULEIRO DE " << playerone.getPlayerName() << ":" << endl;
 		playerone.boardPreview();
 		Sleep(5000);
+		*/
 
 		clrscr();
 		impressaoTitulo();
@@ -53,14 +55,16 @@ int main()
 		cout << setw(48) << "<< CRIAR JOGADOR 2>>" << endl << endl;
 		setcolor(7, 0);
 		Player playertwo(getFilename(), getPlayername()); // Inicializa classe Player do jogador 2
+		/*
+		cout << endl;
 		cout << ">> TABULEIRO DE " << playertwo.getPlayerName() << ":" << endl;
 		playertwo.boardPreview();
 		Sleep(5000);
-
+		*/
 		while (!playerone.fleetDestroyed() || !playertwo.fleetDestroyed())
 		{
 			inic1 = clock();
-			playertwo.attackBoard(playertwo.getBomb());
+			playertwo.attackBoard(playertwo.getBomb(), playerone.getPlayerName());
 			fim1 = clock();
 			acum1 = (acum1 + (fim1 - inic1));
 
@@ -72,7 +76,7 @@ int main()
 			}
 
 			inic2 = clock();
-			playerone.attackBoard(playerone.getBomb());
+			playerone.attackBoard(playerone.getBomb(),playertwo.getPlayerName());
 			fim2 = clock();
 			acum2 = (acum2 + (fim2 - inic2));
 
@@ -104,11 +108,8 @@ int main()
 		p1sc.points = iacum1 * (ocup1 / area1);
 		p2sc.points = iacum2 * (ocup2 / area2);
 
-		Score x1, x2, x3, x4, x5, x6, x7, x8, x9, x10;
-
 		scores = atScore(p1sc, scores);
 		scores = atScore(p2sc, scores);
-
 
 		createScoreDoc(scores);
 	}

@@ -91,9 +91,10 @@ Bomb Player::getBomb() const
 	return bomba;
 }
 
-void Player::attackBoard(const Bomb &b)
+void Player::attackBoard(const Bomb &b,const string &name)
 {	
 	board.moveShips(); // Faz mover os navios aleatoriamente
+	cout << "<<< " << name << "'s turn. >>>" << endl;
 	cout << board; // Mostra os navios após movimento aleatório dos mesmos
 
 	if (board.attack(b))
@@ -102,6 +103,7 @@ void Player::attackBoard(const Bomb &b)
 		cout << ":: RESULTADO: Bom tiro! Acertou no navio!" << endl << endl;
 		Sleep(1000);
 		setcolor(7, 0);
+		cout << "<<< " << name << "'s turn. >>>" << endl;
 		cout << board;
 		Sleep(1000);
 	}
@@ -114,6 +116,7 @@ void Player::attackBoard(const Bomb &b)
 		Sleep(1000);
 	}
 
+	cout << "<<< " << name << "'s turn. >>>" << endl;
 	cout << board;
 }
 
